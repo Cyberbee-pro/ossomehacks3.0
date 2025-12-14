@@ -1,23 +1,28 @@
 export const social_links = [
     {
         name: "Instagram",
-        url: "https://www.instagram.com/githubsrm"
+        url: "https://www.instagram.com/githubsrm",
+        icon: "FaInstagram"
     },
     {
         name: "LinkedIn",
-        url: "https://www.linkedin.com/company/githubsrm"
+        url: "https://www.linkedin.com/company/githubsrm",
+        icon: "FaLinkedin"
     },
     {
         name: "Twitter",
-        url: "https://twitter.com/GithubSrm"
+        url: "https://twitter.com/GithubSrm",
+        icon: "FaXTwitter"
     },
     {
         name: "GitHub",
-        url: "https://github.com/SRM-IST-KTR"
+        url: "https://github.com/SRM-IST-KTR",
+        icon: "FaGithub"
     },
     {
         name: "Discord",
-        url: "https://discord.com/invite/githubsrm"
+        url: "https://discord.com/invite/githubsrm",
+        icon: "FaDiscord"
     },
     {
         name: "Code of Conduct",
