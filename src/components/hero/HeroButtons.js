@@ -81,11 +81,15 @@ export default function HeroButtons() {
           e.currentTarget.style.transform = 'scale(1.05)';
           e.currentTarget.style.backgroundColor = '#262626';
           e.currentTarget.style.color = '#f5efe3';
+          const imgDiv = e.currentTarget.querySelector('div');
+          if (imgDiv) imgDiv.style.filter = 'brightness(0) invert(1)';
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.transform = 'scale(1)';
           e.currentTarget.style.backgroundColor = 'transparent';
           e.currentTarget.style.color = '#262626';
+          const imgDiv = e.currentTarget.querySelector('div');
+          if (imgDiv) imgDiv.style.filter = 'none';
         }}
         onClick={() => {
           window.open('https://discord.com/invite/githubsrm', '_blank');
@@ -94,7 +98,8 @@ export default function HeroButtons() {
         <div style={{
           position: 'relative',
           width: '20px',
-          height: '20px'
+          height: '20px',
+          transition: 'filter 0.2s ease'
         }}>
           <Image
             src="/hero/hero-discord-icon.svg"

@@ -35,7 +35,7 @@ export default function Hero() {
         right: 0,
         bottom: 0,
         width: '100%',
-        height: '100%',
+        height: '105%',
         zIndex: 1,
         pointerEvents: 'none'
       }}>
@@ -43,7 +43,7 @@ export default function Hero() {
           src="/hero/hero-bg-ossome.svg"
           alt=""
           fill
-          style={{ objectFit: 'cover', objectPosition: 'center center' }}
+          style={{ objectFit: 'cover', objectPosition: 'center top' }}
           priority
           unoptimized
         />
@@ -52,7 +52,7 @@ export default function Hero() {
       {/* Left Elephant */}
       <div style={{
         position: 'absolute',
-        bottom: '20%',
+        bottom: '17%',
         left: '8%',
         width: '150px',
         height: '120px',
@@ -71,7 +71,7 @@ export default function Hero() {
       {/* Right Elephant */}
       <div style={{
         position: 'absolute',
-        bottom: '20%',
+        bottom: '17%',
         right: '8%',
         width: '150px',
         height: '120px',
