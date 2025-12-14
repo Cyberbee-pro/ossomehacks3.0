@@ -99,35 +99,73 @@ export default function Hero() {
         width: '100%',
         marginTop: '-80px'
       }}>
-        {/* Main Title SVG - OSSOME hcks */}
+        {/* Main Title Text -OSSOME */}
         <div style={{
           position: 'relative',
-          width: '800px',
-          height: '320px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
           marginBottom: '0px'
         }}>
-          <Image
-            src="/hero/hero-text-overlay.svg"
-            alt="OSSOME हैक्स"
-            fill
-            style={{ objectFit: 'contain' }}
-            unoptimized
-          />
-          {/* Version Badge "3" */}
+          {/* OSSOME text */}
           <div style={{
-            position: 'absolute',
-            width: '120px',
-            top: '170px',
-            bottom: '0',
-            right: '130px'
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'flex-end',
+            fontFamily: "'Poppins', sans-serif",
+            fontSize: '96px',
+            fontWeight: 600,
+            color: '#ffc627',
+            textAlign: 'center',
+            lineHeight: '77%',
+            WebkitTextStroke: '8.0px #1f4047',
+            paintOrder: 'stroke fill',
+            position: 'relative',
+            left: '80px',
+            top: '48px'
           }}>
-            <Image
-              src="/hero/hero-version-bg.svg"
-              alt="3.0"
-              fill
-              style={{ objectFit: 'contain' }}
-              unoptimized
-            />
+            OSSOME
+          </div>
+          
+          {/* hks text */}
+          <div style={{
+            position: 'relative',
+            display: 'inline-block'
+          }}>
+            <div style={{
+              fontFamily: "'Poppins', sans-serif",
+              fontSize: '232px',
+              fontWeight: 600,
+              color: '#1f4047',
+              textAlign: 'center',
+              lineHeight: 'normal',
+              WebkitTextStroke: '6px #ffc627',
+              paintOrder: 'stroke fill',
+              marginTop: '-30px'
+            }}>
+              हैक्स
+            </div>
+            
+            {/* Version Badge "3" */}
+            <div style={{
+              position: 'absolute',
+              width: '120px',
+              height: '190px',
+              top: '51px',
+              right: '-126px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+              <Image
+                src="/hero/hero-version-bg.svg"
+                alt="3.0"
+                width={120}
+                height={190}
+                style={{ objectFit: 'contain' }}
+                unoptimized
+              />
+            </div>
           </div>
         </div>
 
@@ -139,6 +177,7 @@ export default function Hero() {
           color: '#1f4047',
           textAlign: 'center',
           marginBottom: '15px',
+          marginTop: '-20px',
           maxWidth: '600px',
           lineHeight: 'normal'
         }}>
