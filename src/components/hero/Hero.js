@@ -8,15 +8,15 @@ export default function Hero() {
       className="hero-section" 
       style={{
         position: 'relative',
-        width: '100%',
-        minHeight: '100vh',
+        width: '100vw',
+        minHeight: '100svh',
         backgroundColor: '#1a6953',
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '20px'
+        padding: 'clamp(10px,2vw,32px)'
       }}
     >
       {/* Background Layer */}
@@ -53,9 +53,9 @@ export default function Hero() {
       <div style={{
         position: 'absolute',
         bottom: '17%',
-        left: '8%',
-        width: '150px',
-        height: '120px',
+        left: '8vw',
+        width: 'clamp(60px,12vw,150px)',
+        height: 'clamp(48px,9vw,120px)',
         zIndex: 2
       }}>
         <Image
@@ -72,9 +72,9 @@ export default function Hero() {
       <div style={{
         position: 'absolute',
         bottom: '17%',
-        right: '8%',
-        width: '150px',
-        height: '120px',
+        right: '8vw',
+        width: 'clamp(60px,12vw,150px)',
+        height: 'clamp(48px,9vw,120px)',
         transform: 'scaleX(-1)',
         zIndex: 2
       }}>
@@ -97,7 +97,7 @@ export default function Hero() {
         alignItems: 'center',
         maxWidth: '1200px',
         width: '100%',
-        marginTop: '-80px'
+        marginTop: 'clamp(-40px,-6vw,-80px)'
       }}>
         {/* Main Title Text -OSSOME */}
         <div style={{
@@ -105,64 +105,62 @@ export default function Hero() {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          marginBottom: '0px'
+          marginBottom: '0px',
+          marginTop: 'clamp(40px, 12vw, 182.88px)' 
         }}>
           {/* OSSOME text */}
           <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'flex-end',
             fontFamily: "'Poppins', sans-serif",
-            fontSize: '96px',
+            fontSize: 'clamp(32px,8vw,96px)',
             fontWeight: 600,
             color: '#ffc627',
             textAlign: 'center',
-            lineHeight: '77%',
-            WebkitTextStroke: '8.0px #1f4047',
+            lineHeight: '0.77',
+            WebkitTextStroke: 'clamp(2.5px,0.8vw,8px) #1f4047',
             paintOrder: 'stroke fill',
             position: 'relative',
-            left: '80px',
-            top: '48px'
+            left: 'clamp(32px,8vw,96px)',
+            top: '0',
+            marginBottom: 'clamp(-14px,-2vw,2px)' // closest spacing yet
           }}>
             OSSOME
           </div>
-          
-          {/* hks text */}
+          {/* hacks text */}
           <div style={{
             position: 'relative',
-            display: 'inline-block'
+            display: 'inline-block',
           }}>
             <div style={{
               fontFamily: "'Poppins', sans-serif",
-              fontSize: '232px',
+              fontSize: 'clamp(72px,19vw,232px)',
               fontWeight: 600,
               color: '#1f4047',
               textAlign: 'center',
-              lineHeight: 'normal',
-              WebkitTextStroke: '6px #ffc627',
+              lineHeight: '1',
+              WebkitTextStroke: 'clamp(2px,0.5vw,6px) #ffc627',
               paintOrder: 'stroke fill',
-              marginTop: '-30px'
+              marginTop: '0'
             }}>
               हैक्स
             </div>
-            
             {/* Version Badge "3" */}
             <div style={{
               position: 'absolute',
-              width: '120px',
-              height: '190px',
-              top: '51px',
-              right: '-126px',
+              left: 'calc(100% + 4px)', 
+              top: 'clamp(8px,2vw,24px)', 
+              height: '100%',
+              maxWidth: 'clamp(65px,8vw,95px)',
+              width: 'auto',
+              aspectRatio: '120/190',
               display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
+              alignItems: 'flex-start',
+              justifyContent: 'flex-start',
             }}>
               <Image
                 src="/hero/hero-version-bg.svg"
                 alt="3.0"
-                width={120}
-                height={190}
-                style={{ objectFit: 'contain' }}
+                fill
+                style={{ objectFit: 'contain', height: '100%' }}
                 unoptimized
               />
             </div>
@@ -172,13 +170,13 @@ export default function Hero() {
         {/* Subtitle */}
         <div style={{
           fontFamily: "'Poppins', sans-serif",
-          fontSize: '24px',
+          fontSize: 'clamp(12px,2vw,24px)',
           fontWeight: 600,
           color: '#1f4047',
           textAlign: 'center',
-          marginBottom: '15px',
-          marginTop: '-20px',
-          maxWidth: '600px',
+          marginBottom: 'clamp(6px,2vw,15px)',
+          marginTop: 'clamp(12px,2vw,24px)', 
+          maxWidth: '90vw',
           lineHeight: 'normal'
         }}>
           <span style={{ color: '#1f4047' }}>Empowering</span>

@@ -1,3 +1,11 @@
+.ossome-margin {
+  margin-bottom: -18px;
+}
+@media (max-width: 900px) {
+  .ossome-margin {
+    margin-bottom: -8px;
+  }
+}
 @import "tailwindcss";
 
 :root {
