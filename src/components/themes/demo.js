@@ -36,9 +36,9 @@ const Themes = () => {
   ];
 
   return (
-    <section className="bg-gradient-to-br from-teal-700 to-teal-600 py-20 px-6 md:px-10 lg:px-16 min-h-screen flex items-center justify-center">
+    <section className="bg-[#1A6953] py-20 px-6 md:px-10 lg:px-16 min-h-screen flex items-center justify-center">
       <div className="w-full max-w-6xl">
-        <h2 className="text-5xl md:text-6xl font-bold text-yellow-400 text-center mb-12 md:mb-16 tracking-wide font-poppins">
+        <h2 className="text-5xl md:text-6xl font-bold text-[#FFC627] text-center mb-12 md:mb-16 tracking-wide font-poppins">
           Themes
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 justify-items-center">
@@ -47,31 +47,27 @@ const Themes = () => {
               key={theme.id}
               className="transition-transform duration-300 hover:scale-105 hover:-translate-y-2 cursor-pointer"
             >
-              {/* Outermost stamp layer */}
-              <div className="relative w-64 h-80">
+              <div className="relative w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[26rem] lg:w-[22rem] lg:h-[28rem]">
                 <Image
                   src="/tracks/stampLast.png"
                   alt="stamp border outer"
                   width={262}
                   height={369}
-                  className="absolute inset-0 object-cover z-20"
+                  className="absolute inset-0 object-cover z-20 scale-[1.05]"
                 />
-                
-                {/* Second stamp layer */}
+
                 <Image
                   src="/tracks/stampPenultimate.png"
                   alt="stamp border middle"
                   width={220}
                   height={310}
-                  className="absolute object-cover z-30"
-                  style={{ right: '17px', top: '53.5%', transform: 'translateY(-50%)' }}
+                  className="absolute inset-4 sm:inset-5 md:inset-6 lg:inset-7 object-cover z-30"
                 />
 
-                {/* Title overlay layer */}
-                <div className="absolute inset-0 flex items-start justify-center pt-12 z-50 pointer-events-none">
+                <div className="absolute inset-0 flex items-start justify-center pt-12 sm:pt-16 md:pt-20 z-50 pointer-events-none">
                   <span
-                    className="text-4xl md:text-5xl font-semibold text-center drop-shadow"
-                    style={{ color: '#ffffff', marginTop: '-20px' }}
+                    className="text-3xl leading-tight sm:text-4xl md:text-5xl font-semibold text-center drop-shadow mt-2 sm:mt-1 md:-mt-2"
+                    style={{ color: '#ffffff' }}
                   >
                     {theme.id === 6 ? (
                       <>
@@ -85,15 +81,8 @@ const Themes = () => {
                   </span>
                 </div>
 
-                {/* Content inside */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 z-40">
-                  <div 
-                    className={`relative ${theme.id === 4 ? 'w-80 h-80 md:w-[26rem] md:h-[26rem]' : 'w-52 h-52 md:w-56 md:h-56'}`}
-                    style={{
-                      marginTop: theme.id === 1 ? '20px' : theme.id === 2 ? '28px' : theme.id === 4 ? '120px' : theme.id === 5 ? '-8px' : theme.id === 6 ? '112px' : theme.id === 3 ? '24px' : '28px',
-                      marginLeft: theme.id === 4 ? '120px' : theme.id === 6 ? '48px' : '0px'
-                    }}
-                  >
+                <div className="absolute inset-0 flex items-center justify-center z-40">
+                  <div className="relative w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-56 lg:h-56">
                     <Image
                       src={theme.image}
                       alt={theme.title}
