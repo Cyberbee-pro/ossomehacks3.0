@@ -1,5 +1,6 @@
 import Image from "next/image";
 import About from "@/components/about/demo";
+import Sponsors from "@/components/sponsors/demo";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
         <p className="font-semibold text-black-custom">Semi Bold (600)</p>
         <p className="font-bold text-green-custom">Bold (700)</p>
       </div>
+      <Sponsors />
     </>
   );
 }
