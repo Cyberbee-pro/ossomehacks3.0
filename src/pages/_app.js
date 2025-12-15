@@ -7,7 +7,6 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
-
 export default function App({ Component, pageProps }) {
   return (
     <main className={poppins.variable}>
