@@ -61,12 +61,12 @@ const Themes = () => {
                   alt="stamp border middle"
                   width={220}
                   height={310}
-                  className="absolute inset-4 sm:inset-5 md:inset-6 lg:inset-7 object-cover z-30"
+                  className="absolute top-3 sm:top-4 md:top-5 lg:top-6 left-2 sm:left-3 md:left-6 lg:left-5 right-4 sm:right-5 md:right-2 lg:right-7 bottom-4 sm:bottom-5 md:bottom-6 lg:bottom-7 object-cover z-30"
                 />
 
-                <div className="absolute inset-0 flex items-start justify-center pt-12 sm:pt-16 md:pt-20 z-50 pointer-events-none">
+                <div className={`absolute inset-0 flex items-start z-50 pointer-events-none ${theme.id === 5 ? 'pt-16 sm:pt-20 md:pt-12 lg:pt-8' : theme.id === 6 ? 'pt-16 sm:pt-20 md:pt-12 lg:pt-8' : 'pt-16 sm:pt-20 md:pt-12 lg:pt-12'} ${theme.id === 5 ? 'justify-center md:justify-center lg:justify-center' : theme.id === 6 ? 'justify-center md:justify-center' : 'justify-center md:justify-start lg:justify-start'} ${theme.id === 1 ? 'md:pl-18 lg:pl-[4.5rem]' : theme.id === 2 ? 'md:pl-16 lg:pl-16' : theme.id === 3 ? 'md:pl-20 lg:pl-[4.5rem]' : theme.id === 4 ? 'md:pl-12 lg:pl-10' : theme.id === 5 ? 'md:-translate-x-6 lg:-translate-x-11' : theme.id === 6 ? 'md:-translate-x-6 lg:-translate-x-12' : 'md:pl-18 lg:pl-16'}`}>
                   <span
-                    className="text-3xl leading-tight sm:text-4xl md:text-5xl font-semibold text-center drop-shadow mt-2 sm:mt-1 md:-mt-2"
+                    className={`text-2xl leading-tight sm:text-3xl font-semibold drop-shadow mt-2 sm:mt-1 md:-mt-2 lg:mt-0 ${theme.id === 6 ? 'md:text-3xl text-center md:text-center' : theme.id === 5 ? 'md:text-3xl text-center md:text-center lg:text-center' : 'md:text-4xl text-center md:text-left lg:text-left'}`}
                     style={{ color: '#ffffff' }}
                   >
                     {theme.id === 6 ? (
@@ -75,20 +75,26 @@ const Themes = () => {
                         <br />
                         Crypto
                       </>
+                    ) : theme.id === 5 ? (
+                      <>
+                        Open
+                        <br />
+                        Innovation
+                      </>
                     ) : (
                       theme.title
                     )}
                   </span>
                 </div>
 
-                <div className="absolute inset-0 flex items-center justify-center z-40">
+                <div className={`absolute inset-0 flex items-center justify-center z-40 ${theme.id === 1 ? 'md:-translate-x-4 md:-translate-y-9 lg:-translate-x-8 lg:-translate-y-10' : theme.id === 2 ? 'md:-translate-x-5 md:-translate-y-9 lg:-translate-x-8 lg:-translate-y-[2.375rem]' : theme.id === 3 ? 'md:-translate-x-5 md:-translate-y-9 lg:-translate-x-8 lg:-translate-y-[2.375rem]' : theme.id === 4 ? 'md:-translate-x-5 md:-translate-y-9 scale-110 lg:-translate-x-10 lg:-translate-y-12' : theme.id === 5 ? 'md:-translate-x-4 md:-translate-y-5 lg:-translate-x-8 lg:-translate-y-10' : theme.id === 6 ? 'md:translate-y-2 lg:translate-y-2' : ''}`}>
                   <div className="relative w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-56 lg:h-56">
                     <Image
                       src={theme.image}
                       alt={theme.title}
                       width={200}
                       height={200}
-                      className="object-contain drop-shadow-lg"
+                      className={`object-contain drop-shadow-lg ${theme.id === 4 ? 'lg:scale-110' : theme.id === 5 ? 'md:scale-90 lg:scale-90' : ''}`}
                     />
                   </div>
                 </div>
