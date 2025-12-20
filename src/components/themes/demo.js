@@ -61,18 +61,18 @@ const Themes = () => {
                   alt="stamp border middle"
                   width={220}
                   height={310}
-                  className="absolute top-4 sm:top-4 md:top-5 lg:top-6 left-4 sm:left-3 md:left-6 lg:left-5 right-0.5 sm:right-5 md:right-2 lg:right-7 bottom-0.5 sm:bottom-5 md:bottom-6 lg:bottom-7 object-cover z-30"
+                  className="absolute top-4 sm:top-5 sm:scale-105 md:top-5 md:scale-100 lg:top-6 left-4 sm:left-5 md:left-6 lg:left-5 right-0.5 sm:right-0 md:right-2 lg:right-7 bottom-0.5 sm:bottom-0 md:bottom-6 lg:bottom-7 object-cover z-30"
                 />
 
-                <div className={`absolute inset-0 flex items-start z-50 pointer-events-none ${theme.id === 5 ? 'pt-6 sm:pt-20 md:pt-12 lg:pt-12' : theme.id === 6 ? 'pt-11 sm:pt-20 md:pt-12 lg:pt-12' : 'pt-11 sm:pt-20 md:pt-12 lg:pt-12'} ${theme.id === 5 ? 'justify-center md:justify-center lg:justify-center' : theme.id === 6 ? 'justify-center md:justify-center' : 'justify-center md:justify-start lg:justify-start'} ${theme.id === 1 ? 'md:pl-18 lg:pl-[4.5rem]' : theme.id === 2 ? 'md:pl-16 lg:pl-16' : theme.id === 3 ? 'md:pl-20 lg:pl-[4.5rem]' : theme.id === 4 ? 'md:pl-12 lg:pl-10' : theme.id === 5 ? 'md:-translate-x-6 lg:-translate-x-11' : theme.id === 6 ? 'md:-translate-x-6 lg:-translate-x-12' : 'md:pl-18 lg:pl-16'}`}>
+                <div className={`absolute inset-0 flex items-start z-50 pointer-events-none ${theme.id === 5 ? 'pt-6 sm:pt-6 md:pt-12 lg:pt-12' : theme.id === 6 ? 'pt-6 sm:pt-6 md:pt-12 lg:pt-12' : 'pt-11 sm:pt-10 md:pt-12 lg:pt-12'} ${theme.id === 5 ? 'justify-center md:justify-center lg:justify-center' : theme.id === 6 ? 'justify-center sm:-translate-x-3 md:justify-center' : 'justify-center md:justify-start lg:justify-start'} ${theme.id === 1 ? 'md:pl-20 lg:pl-[4.75rem] sm:-translate-x-2' : theme.id === 2 ? 'md:pl-18 lg:pl-18 sm:-translate-x-2' : theme.id === 3 ? 'md:pl-22 lg:pl-[4.75rem] sm:-translate-x-2' : theme.id === 4 ? 'md:pl-14 lg:pl-14 sm:-translate-x-3' : theme.id === 5 ? 'md:-translate-x-6 lg:-translate-x-11 sm:-translate-x-3' : theme.id === 6 ? 'md:-translate-x-6 lg:-translate-x-12' : 'md:pl-18 lg:pl-16'}`}>
                   <span
-                    className={`text-4xl leading-tight sm:text-3xl font-semibold drop-shadow mt-2 sm:mt-1 md:-mt-2 lg:mt-0 ${theme.id === 6 ? 'md:text-3xl text-center md:text-center' : theme.id === 5 ? 'md:text-3xl text-center md:text-center lg:text-center' : 'md:text-4xl text-center md:text-left lg:text-left'}`}
+                    className={`text-3xl leading-tight sm:text-4xl md:text-3xl font-semibold drop-shadow mt-2 sm:mt-1 md:-mt-2 lg:mt-0 ${theme.id === 6 ? 'md:text-3xl text-center md:text-center' : theme.id === 5 ? 'md:text-3xl text-center md:text-center lg:text-center' : 'md:text-4xl text-center md:text-left lg:text-left'}`}
                     style={{ color: '#ffffff' }}
                   >
                     {theme.id === 6 ? (
                       <>
                         Web3 &
-                        <br />
+                        <br />  
                         Crypto
                       </>
                     ) : theme.id === 5 ? (
@@ -87,8 +87,8 @@ const Themes = () => {
                   </span>
                 </div>
 
-                <div className={`absolute inset-0 flex items-center justify-center z-40 ${theme.id === 1 ? 'translate-y-2 md:-translate-x-4 md:-translate-y-9 lg:-translate-x-8 lg:-translate-y-10' : theme.id === 2 ? 'translate-y-[1.375rem] md:-translate-x-5 md:-translate-y-9 lg:-translate-x-8 lg:-translate-y-[2.375rem]' : theme.id === 3 ? 'translate-y-[1.375rem] md:-translate-x-5 md:-translate-y-9 lg:-translate-x-8 lg:-translate-y-[2.375rem]' : theme.id === 4 ? 'translate-y-2 -translate-x-1 md:-translate-x-5 md:-translate-y-9 scale-110 lg:-translate-x-10 lg:-translate-y-12' : theme.id === 5 ? 'translate-y-3 md:-translate-x-4 md:-translate-y-9 lg:-translate-x-8 lg:-translate-y-10' : theme.id === 6 ? 'md:translate-y-2 lg:translate-y-2' : ''}`}>
-                  <div className={`relative ${theme.id === 1 ? 'w-48 h-48' : theme.id === 2 ? 'w-44 h-44' : theme.id === 3 ? 'w-44 h-44' : theme.id === 4 ? 'w-52 h-52' : theme.id === 5 ? 'w-44 h-44' : theme.id === 6 ? 'w-52 h-52' : 'w-36 h-36'} sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-56 lg:h-56`}>
+                <div className={`absolute inset-0 flex items-center justify-center z-40 ${theme.id === 1 ? 'translate-y-2 sm:-translate-x-2 sm:-translate-y-2 md:-translate-x-4 md:-translate-y-9 lg:-translate-x-8 lg:-translate-y-10' : theme.id === 2 ? 'translate-y-[1.375rem] sm:-translate-x-2 sm:-translate-y-3 md:-translate-x-5 md:-translate-y-9 lg:-translate-x-8 lg:-translate-y-[2.375rem]' : theme.id === 3 ? 'translate-y-[1.375rem] sm:-translate-x-2 sm:-translate-y-3 md:-translate-x-5 md:-translate-y-9 lg:-translate-x-8 lg:-translate-y-[2.375rem]' : theme.id === 4 ? 'translate-y-2 -translate-x-1 sm:translate-x-2 sm:translate-y-1 md:-translate-x-5 md:-translate-y-9 scale-110 lg:-translate-x-10 lg:-translate-y-12' : theme.id === 5 ? 'translate-y-3 sm:-translate-x-2 sm:-translate-y-2 md:-translate-x-4 md:-translate-y-9 lg:-translate-x-8 lg:-translate-y-10' : theme.id === 6 ? 'translate-x-0.5 translate-y-14 sm:-translate-x-3 sm:translate-y-8 md:-translate-x-[18px] md:translate-y-2 lg:-translate-x-7.5 lg:translate-y-2' : ''}`}>
+                  <div className={`relative ${theme.id === 1 ? 'w-48 h-48 sm:w-56 sm:h-56' : theme.id === 2 ? 'w-44 h-44 sm:w-52 sm:h-52' : theme.id === 3 ? 'w-44 h-44 sm:w-52 sm:h-52' : theme.id === 4 ? 'w-52 h-52 sm:w-64 sm:h-64' : theme.id === 5 ? 'w-44 h-44' : theme.id === 6 ? 'w-52 h-52' : 'w-36 h-36'} md:w-52 md:h-52 lg:w-56 lg:h-56`}>
                     <Image
                       src={theme.image}
                       alt={theme.title}
