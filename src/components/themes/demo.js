@@ -5,33 +5,33 @@ const Themes = () => {
   const themes = [
     {
       id: 1,
-      title: 'Ed-Tech',
+      title: 'EdTech',
       image: '/tracks/edtech.png',
     },
     {
       id: 2,
-      title: 'Agritech',
+      title: 'AgriTech',
       image: '/tracks/Agritech.png',
     },
     {
       id: 3,
-      title: 'Fintech',
+      title: 'FinTech',
       image: '/tracks/fintech.png',
     },
     {
       id: 4,
-      title: 'Healthtech',
+      title: 'HealthTech',
       image: '/tracks/healthtech.png',
-    },
-    {
-      id: 5,
-      title: 'Open Innovation',
-      image: '/tracks/openinovation.png',
     },
     {
       id: 6,
       title: 'Web3 & Crypto',
       image: '/tracks/web3.png',
+    },
+    {
+      id: 5,
+      title: 'Open Innovation',
+      image: '/tracks/openinovation.png',
     },
   ];
 
