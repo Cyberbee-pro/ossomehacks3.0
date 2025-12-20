@@ -1,3 +1,4 @@
+import Themes from "@/components/themes/demo";
 import Image from "next/image";
 import About from "@/components/about/demo";
 import Sponsors from "@/components/sponsors/demo";
@@ -8,6 +9,7 @@ export default function Home() {
   return (
     <>
       <About />
+      <Themes />
       <Sponsors />
       <MapBox />
       <ContactSection />
