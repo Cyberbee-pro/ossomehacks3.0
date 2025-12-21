@@ -5,7 +5,7 @@ import Sponsors from "@/components/sponsors/sponsors";
 import ContactSection from "@/components/contactUs/contactUs";
 import MapBox from "@/components/timeLine/mapbox";
 import FAQSection from "@/components/faq/FAQSection";
-
+import Gallery from "@/components/gallery/demo";
 
 export default function Home() {
   return (
@@ -15,6 +15,7 @@ export default function Home() {
       <Sponsors />
       <MapBox />
       <FAQSection />
+      <Gallery />
       <ContactSection />
       {/* <div className="font-poppins text-textColor space-y-2">
         <p className="font-light text-yellow">Light (300)</p>
