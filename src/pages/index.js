@@ -5,6 +5,8 @@ import About from "@/components/about/about";
 import Sponsors from "@/components/sponsors/sponsors";
 import ContactSection from "@/components/contactUs/contactUs";
 import MapBox from "@/components/timeLine/mapbox";
+import FAQSection from "@/components/faq/FAQSection";
+import Gallery from "@/components/gallery/demo";
 
 export default function Home() {
   return (
@@ -14,6 +16,8 @@ export default function Home() {
       <Themes />
       <Sponsors />
       <MapBox />
+      <FAQSection />
+      <Gallery />
       <ContactSection />
       {/* <div className="font-poppins text-textColor space-y-2">
         <p className="font-light text-yellow">Light (300)</p>
@@ -21,7 +25,8 @@ export default function Home() {
         <p className="font-medium text-navy">Medium (500)</p>
         <p className="font-semibold text-black-custom">Semi Bold (600)</p>
         <p className="font-bold text-green-custom">Bold (700)</p>
-      </div> */}
+        */
+      }
     </>
   );
 }
