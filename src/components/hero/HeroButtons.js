@@ -4,11 +4,12 @@ export default function HeroButtons() {
   return (
     <div className="hero-buttons" style={{
       display: 'flex',
-      gap: '16px',
+      gap: 'clamp(2px,2vw,18px)',
       alignItems: 'center',
       justifyContent: 'center',
-      marginTop: '15px',
-      marginBottom: '25px',
+      flexWrap: 'wrap',
+      marginTop: 'clamp(8px,2vw,20px)',
+      marginBottom: 'clamp(12px,3vw,32px)',
       zIndex: 3
     }}>
       {/* Apply with Devfolio Button */}
@@ -19,14 +20,14 @@ export default function HeroButtons() {
           color: '#f5efe3',
           border: 'none',
           borderRadius: '10px',
-          padding: '16px 32px',
-          fontSize: '16px',
+          padding: 'clamp(4px,1vw,12px) clamp(10px,3vw,20px)',
+          fontSize: 'clamp(10px,2.2vw,16px)',
           fontWeight: 600,
           fontFamily: "'Poppins', sans-serif",
           cursor: 'pointer',
           display: 'flex',
           alignItems: 'center',
-          gap: '10px',
+          gap: 'clamp(2px,1.5vw,12px)',
           position: 'relative',
           overflow: 'hidden',
           transition: 'transform 0.2s ease'
@@ -66,14 +67,14 @@ export default function HeroButtons() {
           color: '#262626',
           border: '4px solid #262626',
           borderRadius: '10px',
-          padding: '16px 32px',
-          fontSize: '16px',
+          padding: 'clamp(4px,1vw,12px) clamp(10px,3vw,20px)',
+          fontSize: 'clamp(10px,2.2vw,16px)',
           fontWeight: 600,
           fontFamily: "'Poppins', sans-serif",
           cursor: 'pointer',
           display: 'flex',
           alignItems: 'center',
-          gap: '10px',
+          gap: 'clamp(2px,1.5vw,12px)',
           position: 'relative',
           transition: 'all 0.2s ease'
         }}

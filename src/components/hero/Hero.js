@@ -28,36 +28,34 @@ export default function Hero() {
       }} />
 
       {/* Cover Main Vector */}
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        width: '100%',
-        height: '105%',
-        zIndex: 1,
-        pointerEvents: 'none'
-      }}>
+      <div
+        className="hero-tomb-bg"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          width: '100vw',
+          height: 'clamp(400px, 110vw, 1200px)', // responsive height
+          zIndex: 1,
+          pointerEvents: 'none',
+          overflow: 'hidden'
+        }}
+      >
         <Image
           src="/hero/hero-bg-ossome.svg"
           alt=""
           fill
-          style={{ objectFit: 'cover', objectPosition: 'center top' }}
+          className="hero-tomb-img"
+          style={{ objectFit: 'contain', objectPosition: 'top center' }}
           priority
           unoptimized
         />
       </div>
 
       {/* Left Elephant */}
-      <div style={{
-        position: 'absolute',
-        bottom: '17%',
-        left: '8vw',
-        width: 'clamp(60px,12vw,150px)',
-        height: 'clamp(48px,9vw,120px)',
-        zIndex: 2
-      }}>
+      <div className="hero-elephant hero-elephant-left">
         <Image
           src="/hero/hero-elephant.svg"
           alt="Decorative elephant"
@@ -69,15 +67,7 @@ export default function Hero() {
       </div>
 
       {/* Right Elephant */}
-      <div style={{
-        position: 'absolute',
-        bottom: '17%',
-        right: '8vw',
-        width: 'clamp(60px,12vw,150px)',
-        height: 'clamp(48px,9vw,120px)',
-        transform: 'scaleX(-1)',
-        zIndex: 2
-      }}>
+      <div className="hero-elephant hero-elephant-right">
         <Image
           src="/hero/hero-elephant.svg"
           alt="Decorative elephant"

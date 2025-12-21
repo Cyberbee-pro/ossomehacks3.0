@@ -9,12 +9,12 @@ import MapBox from "@/components/timeLine/mapbox";
 export default function Home() {
   return (
     <>
+      <Hero />
       <About />
       <Themes />
       <Sponsors />
       <MapBox />
       <ContactSection />
-      <Hero />
       {/* <div className="font-poppins text-textColor space-y-2">
         <p className="font-light text-yellow">Light (300)</p>
         <p className="font-normal text-text">Regular (400)</p>
