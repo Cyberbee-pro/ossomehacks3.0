@@ -12,7 +12,7 @@ const Navbar = () => {
     <nav className="fixed top-0 w-full z-50 bg-[#1A6953] px-10 py-6 flex items-center justify-between">
       <div className="flex items-center">
         <Image
-          src="/logo.png"
+          src="/logos/final-logo.svg"
           alt="Ossome Hacks"
           width={140}
           height={60}
