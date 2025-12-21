@@ -14,8 +14,8 @@ export default function Home() {
       <Themes />
       <Sponsors />
       <MapBox />
-      <ContactSection />
       <FAQSection />
+      <ContactSection />
       {/* <div className="font-poppins text-textColor space-y-2">
         <p className="font-light text-yellow">Light (300)</p>
         <p className="font-normal text-text">Regular (400)</p>
