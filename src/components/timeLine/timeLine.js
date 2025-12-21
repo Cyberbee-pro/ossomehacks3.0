@@ -1,56 +1,67 @@
 import { timeLine } from "@/data/timeLine";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function TimeLine() {
-    return (
-    <section className="flex flex-col w-full items-center justify-center gap-2">
-        <Content />
+  return (
+    // Added overflow-x-hidden to prevent scrollbar flickering if animations go slightly off-screen
+    <section className="flex flex-col w-full items-center justify-center gap-2 overflow-x-hidden">
+      <Content />
     </section>
-    );
+  );
 }
 
 /* ======================
     CONTENT (STATE OWNER)
 ====================== */
 const Content = () => {
-const [activeDay, setActiveDay] = useState(1);
-const [eventIndex, setEventIndex] = useState(0);
+  const [activeDay, setActiveDay] = useState(1);
+  const [eventIndex, setEventIndex] = useState(0);
 
-const dayData = timeLine[activeDay - 1];
-const publicEvents = dayData.events.filter(e => e.type === "Public");
+  const dayData = timeLine[activeDay - 1];
+  const publicEvents = dayData.events.filter((e) => e.type === "Public");
 
-// reset event when day changes
-useEffect(() => {
+  useEffect(() => {
     setEventIndex(0);
-}, [activeDay]);
+  }, [activeDay]);
 
-return (
+  return (
     <div className="flex flex-col w-full items-center justify-center gap-6">
-        <div className="text-yellow font-bold text-6xl md:text-7xl">
-        Timeline
-    </div>
+      <div className="text-yellow font-bold text-6xl md:text-7xl">Timeline</div>
 
-    <div className="text-yellow text-4xl md:text-5xl">
-        {dayData.day} - {dayData.date}
-    </div>
+      {/* --- ANIMATED DATE CONTAINER --- */}
+      <div className="relative h-12 md:h-14 w-full overflow-hidden">
+        <AnimatePresence mode="popLayout">
+          <motion.div
+            key={`${dayData.day}-${dayData.date}`}
+            initial={{ y: "100%", opacity: 0, filter: "blur(10px)" }}
+            animate={{ y: "0%", opacity: 1, filter: "blur(0px)" }}
+            exit={{ y: "-100%", opacity: 0, filter: "blur(10px)" }}
+            transition={{ duration: 0.5, type: "spring", bounce: 0.2 }}
+            
+            className="text-yellow text-4xl md:text-5xl absolute left-0 right-0 mx-auto text-center w-full"
+          >
+            {dayData.day} - {dayData.date}
+          </motion.div>
+        </AnimatePresence>
+      </div>
 
-    <Feed
+      <Feed
         events={publicEvents}
         eventIndex={eventIndex}
         setEventIndex={setEventIndex}
-    />
+      />
 
-    <TimeBar
+      <TimeBar
         publicEvents={publicEvents}
         activeIndex={eventIndex}
         setEventIndex={setEventIndex}
-    />
+      />
 
-    <CurrDay activeDay={activeDay} setActiveDay={setActiveDay} />
+      <CurrDay activeDay={activeDay} setActiveDay={setActiveDay} />
     </div>
-);
+  );
 };
-
 
 /* ======================
     FEED 
@@ -125,75 +136,99 @@ const getHourFromTime = (timeStr) => {
 };
 
 const EventObj = ({ EventList, activeIndex, setEventIndex }) => {
-return (
+  return (
     <div className="relative w-[79vw] h-2 bg-text">
-        {EventList.map((event, index) => {
+      {EventList.map((event, index) => {
         const hour = getHourFromTime(event.time);
-        const left = (hour / 24) * 100 ;
-
+        const left = (hour / 24) * 100;
+        
+        const positionLeft =
+          EventList.length <= 7
+            ? left
+            : index === 0
+            ? left * 0.5
+            : index === 1
+            ? left * 1
+            : index === 2
+            ? left * 1.1
+            : left * 1.3;
+        
         return (
-            <button
+          <button
             key={index}
             onClick={() => setEventIndex(index)}
-            className="absolute top-1/2 -translate-y-1/2"
-            style={{ left: `${EventList.length<=7?left
-                                :index==0?left*.5
-                                :index==1?left*1
-                                :index==2?left*1.1
-                                :left*1.3
-                            }%` }}
-            >
-            <div className={`w-4 h-4 rounded-full transition
-                ${index === activeIndex 
-                    ? "bg-yellow scale-125" 
-                    : "bg-text"}`}
-            />
-            <div className={`absolute left-1/2 -translate-x-1/2 w-0.5 bg-text z-10
+            className="absolute top-1/2 -translate-y-1/2 group" // Added 'group' for hover effects if needed
+            style={{ left: `${positionLeft}%` }}
+          >
+            {/* --- THE DOT CONTAINER --- */}
+            <div className="relative flex items-center justify-center w-6 h-6">
+                
+              {/* 1. Base Static Dot (Always Visible as Gray) */}
+              <div className="w-4 h-4 rounded-full bg-text absolute" />
+
+              {/* 2. Animated Active Dot (Only renders on active index) */}
+              {index === activeIndex && (
+                <motion.div
+                  layoutId="activeEventDot" // This ID makes it slide!
+                  className="w-4 h-4 rounded-full bg-yellow absolute z-10"
+                  initial={false}
+                  animate={{ scale: 1.25 }} // Scale effect
+                  transition={{
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 25,
+                  }}
+                />
+              )}
+            </div>
+
+              <div className={`absolute left-1/2 -translate-x-1/2 w-0.5 bg-text z-10
                 ${
-                    EventList.length <= 7 
-                    ? (index % 2 !== 0 
-                        ? (index % 4 === 1 ? "-top-full h-8" : "-bottom-full h-16 -translate-y-1/2 ") 
-                        : (index % 4 === 2 ? "top-full h-4" : "top-full h-16")
+                    EventList.length <= 7
+                    ? (index % 2 !== 0
+                        ? (index % 4 === 1 ? "-top-full h-5 translate-y-2" : "-bottom-full h-19 -translate-y-1/2 ")
+                        : (index % 4 === 2 ? "top-full h-3.5 -translate-y-1" : "top-full h-15 -translate-y-1")
                     )
-                    : (index % 2 !== 0 
-                        ? (index === 1 ? "-top-full h-0.5 translate-y-3.5" // First odd (Index 1)
+                    : (index % 2 !== 0
+                        ? (index === 1 ? "-top-full h-1 translate-y-6" // First odd (Index 1)
                             : (index % 4 === 1 ? "-top-full h-20"
-                            : index % 6 === 5) ? "-top-full h-18 -translate-y-14 bg-text/70" : "-top-full h-8 -translate-y-2.5 bg-text/50" 
+                            : index % 6 === 5) ? "-top-full h-20 -translate-y-12 bg-text" : "-top-full h-8 -translate-y-.5 bg-text"
                             )
-                        : (index===0 ? "top-full h-6 " //First Even (Index 0)
-                        :index % 4 === 0 ? "top-full h-16 bg-text/30" 
-                        : (index % 6 === 2 ? "top-full h-3" : "top-full h-5")
+                        : (index===0 ? "top-full h-4 -translate-y-1" //First Even (Index 0)
+                        :index % 4 === 0 ? "top-full h-15 -translate-y-1"
+                        : (index % 6 === 2 ? "top-full h-2 -translate-y-1" : "top-full h-4 -translate-y-1")
                         )
                     )
                 }`}
             />
+
             <div
             className={`absolute left-1/2 -translate-x-1/2 text-xs text-text text-center w-32
                 ${
-                    EventList.length <= 7 
-                    ? (index % 2 !== 0 
-                        ? (index % 4 === 1 ? "-top-16" : "-top-25") 
+                    EventList.length <= 7
+                    ? (index % 2 !== 0
+                        ? (index % 4 === 1 ? "-top-16" : "-top-25")
                         : (index % 4 === 2 ? "top-8" : "top-20")
                     )
                     :(index % 2 !== 0 ? (index === 1 ? "-top-12" // First odd (Index 1)
                             : (index % 4 === 1 ? "-top-20"
-                                : index % 6 === 5) ? "-top-30" : "-top-18 text-text" 
-                            ) 
+                                : index % 6 === 5) ? "-top-30" : "-top-18 text-text"
+                            )
                     : (index===0 ? "top-10" // First Even (Index 0)
-                    :index % 4 === 0 ? "top-20" 
+                    :index % 4 === 0 ? "top-20"
                     : (index % 6 === 2 ? "top-6" : "top-9"))
                     )
                     }`}
                 >
-                {event.event}
-                <br />
-                <span className="opacity-70">{event.time}</span>
+              {event.event}
+              <br />
+              <span className="opacity-70">{event.time}</span>
             </div>
-        </button>
+          </button>
         );
-    })}
+      })}
     </div>
-);
+  );
 };
 
 
@@ -204,11 +239,11 @@ return (
 ====================== */
 const CurrDay = ({ activeDay, setActiveDay }) => {
     return (
-    <div className="flex bg-text p-1 m-2 rounded-4xl gap-2">
-        <Button text="Day 1" day={1} activeDay={activeDay} setActiveDay={setActiveDay} />
-        <Button text="Day 2" day={2} activeDay={activeDay} setActiveDay={setActiveDay} />
-        <Button text="Day 3" day={3} activeDay={activeDay} setActiveDay={setActiveDay} />
-    </div>
+        <div className="flex bg-text p-1 m-2 rounded-4xl gap-2 isolate">
+            <Button text="Day 1" day={1} activeDay={activeDay} setActiveDay={setActiveDay} />
+            <Button text="Day 2" day={2} activeDay={activeDay} setActiveDay={setActiveDay} />
+            <Button text="Day 3" day={3} activeDay={activeDay} setActiveDay={setActiveDay} />
+        </div>
     );
 };
 
@@ -217,16 +252,30 @@ const CurrDay = ({ activeDay, setActiveDay }) => {
 ====================== */
 const Button = ({ text, day, activeDay, setActiveDay }) => {
     return (
-    <button
-        onClick={() => setActiveDay(day)}
-        className={`text-lg rounded-4xl px-3 py-1 transition-all duration-200
-        ${
-            activeDay === day
-            ? "bg-background text-text"
-            : "bg-transparent text-black"
-        }`}
-    >
-        {text}
-    </button>
+        <button
+            onClick={() => setActiveDay(day)}
+            // 1. Added relative to contain the absolute background
+            // 2. Removed bg-colors from here (handled by the motion div now)
+            className={`relative text-lg rounded-4xl px-4 py-2 transition-colors duration-200 ${
+                activeDay === day ? "text-text" : "text-black hover:text-black/70"
+            }`}
+        >
+            {/* The Text (z-10 ensures it sits ON TOP of the sliding background) */}
+            <span className="relative z-10">{text}</span>
+
+            {activeDay === day && (
+                <motion.div
+                    // Framer detects this ID moving 
+                    // from one component to another and animates the position/width.
+                    layoutId="activePill"
+                    
+                    // Style matches your original active state
+                    className="absolute inset-0 bg-background rounded-4xl"
+                    
+                    // "spring" gives it that liquid/bouncy physics feel
+                    transition={{ type: "spring", stiffness: 300, damping: 10 }}
+                />
+            )}
+        </button>
     );
 };
