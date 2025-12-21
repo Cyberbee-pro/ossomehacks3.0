@@ -37,7 +37,7 @@ export default function Hero() {
           right: 0,
           bottom: 0,
           width: '100vw',
-          height: 'clamp(400px, 110vw, 1200px)', // responsive height
+          height: '100vh', 
           zIndex: 1,
           pointerEvents: 'none',
           overflow: 'hidden'
@@ -48,7 +48,7 @@ export default function Hero() {
           alt=""
           fill
           className="hero-tomb-img"
-          style={{ objectFit: 'contain', objectPosition: 'top center' }}
+          style={{ objectFit: 'fill', objectPosition: 'top center' }}
           priority
           unoptimized
         />
@@ -87,17 +87,19 @@ export default function Hero() {
         alignItems: 'center',
         maxWidth: '1200px',
         width: '100%',
-        marginTop: 'clamp(-40px,-6vw,-80px)'
+        marginTop: 'clamp(-120px, -16vw, -200px)'
       }}>
         {/* Main Title Text -OSSOME */}
-        <div style={{
-          position: 'relative',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          marginBottom: '0px',
-          marginTop: 'clamp(40px, 12vw, 182.88px)' 
-        }}>
+        <div
+          style={{
+            position: 'relative',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            marginBottom: '0px',
+            marginTop: 'clamp(10px, 7vw, 120px)', // more responsive
+          }}
+        >
           {/* OSSOME text */}
           <div style={{
             fontFamily: "'Poppins', sans-serif",
@@ -183,7 +185,9 @@ export default function Hero() {
         <HeroButtons />
 
         {/* Timer */}
-        <Timer />
+        <div style={{ marginTop: '0px', marginBottom: '0px' }}>
+          <Timer />
+        </div>
       </div>
     </section>
   );
