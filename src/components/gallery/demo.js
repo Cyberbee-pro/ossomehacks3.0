@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import Image from "next/image";
 
 // Gallery image paths
@@ -15,8 +15,45 @@ const images = [
 ];
 
 export default function GalleryHero() {
+  const videoRef = useRef(null);
+  const videoContainerRef = useRef(null);
+
+  // OPTIONAL: Mute state (enable if mute/unmute button is used)
+  const [isMuted, setIsMuted] = useState(true);
+
   // Reference to the scroll section
   const sectionRef = useRef(null);
+
+  // Check if video is at least 60% visible
+  const isInView = useInView(videoContainerRef, {
+    amount: 0.6, // 60% visible
+  });
+
+  // Play / pause video strictly based on visibility
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (isInView) {
+      video.play().catch(() => {
+        console.log("Video autoplay was prevented");
+      });
+    } else {
+      video.pause();
+    }
+  }, [isInView]);
+
+  
+  // OPTIONAL: Handle mute/unmute (enable if button is included)
+  const toggleMute = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const newMutedState = !isMuted;
+    setIsMuted(newMutedState);
+    video.muted = newMutedState;
+  };
+  
 
   // Track scroll progress within section
   const { scrollYProgress } = useScroll({
@@ -46,52 +83,57 @@ export default function GalleryHero() {
         {/* Sticky video container */}
         <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden bg-background">
           <motion.div
+            ref={videoContainerRef}
             style={{ width, height, borderRadius: radius }}
             className="relative z-20 overflow-hidden shadow-2xl will-change-transform"
           >
-            {/* Background video */}
+            {/* Video element */}
             <video
-              className="object-cover"
-              style={{
-                position: "absolute",
-                left: "50%",
-                top: "50%",
-                transform: "translate(-50%, -50%)",
-                width: "100vw",
-                height: "100vh",
-              }}
-              autoPlay
+              ref={videoRef}
+              className="absolute inset-0 w-full h-full object-cover"
               muted
               loop
               playsInline
+              controls={false}
             >
               <source src="/gallery/journey.mp4" type="video/mp4" />
             </video>
+
+            {/* OPTIONAL: Mute / Unmute button (commented for review) */}
+            
+            <button
+              onClick={toggleMute}
+              className="absolute bottom-6 right-6 z-30 bg-black/50 hover:bg-black/70 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
+              aria-label={isMuted ? "Unmute video" : "Mute video"}
+            >
+              {isMuted ? "🔇" : "🔊"}
+            </button>
+            
           </motion.div>
         </div>
       </motion.section>
 
       {/* Infinite image carousels */}
       <section className="py-36 space-y-4 overflow-hidden">
-        <Carousal images={images} direction="left" offset={20} />
-        <Carousal images={images} direction="right" offset={-200} />
+        <Carousel images={images} direction="left" offset={20} />
+        <Carousel images={images} direction="right" offset={-200} />
       </section>
     </section>
   );
 }
 
-function Carousal({ images, direction = "left", offset = 0 }) {
+function Carousel({ images, direction = "left", offset = 0 }) {
   const loopImages = [...images, ...images];
 
   // Measure one card width
   const firstCardRef = useRef(null);
 
-  // Distance to slide per image in the carousal
+  // Distance to slide per image in the carousel
   const [slideDistance, setSlideDistance] = useState(0);
 
   const numImages = images.length;
 
-  // Calculate distance to slideafter first render
+  // Calculate distance to slide after first render
   useEffect(() => {
     if (!firstCardRef.current) return;
 
@@ -102,14 +144,16 @@ function Carousal({ images, direction = "left", offset = 0 }) {
 
   // Animation keyframes and timing
   const keyframes = [];
-  const keyframesTimes = [];
+  const keyframeTimes = [];
 
-  if (!slideDistance) return null;
+  const shouldAnimate = slideDistance > 0;
 
   for (let i = 0; i <= numImages; i++) {
     // Calculate x-position per step
     const position =
-      direction === "left" ? -i * slideDistance : -slideDistance * (numImages - i);
+      direction === "left"
+        ? -i * slideDistance
+        : -slideDistance * (numImages - i);
 
     // Hold position briefly before moving
     keyframes.push(position, position);
@@ -119,10 +163,10 @@ function Carousal({ images, direction = "left", offset = 0 }) {
     const moveDuration = 0.6;
 
     if (i === 0) {
-      keyframesTimes.push(0, timePerImage * pauseDuration);
+      keyframeTimes.push(0, timePerImage * pauseDuration);
     } else {
-      const prevTime =keyframesTimes[keyframesTimes.length - 1];
-     keyframesTimes.push(
+      const prevTime = keyframeTimes[keyframeTimes.length - 1];
+      keyframeTimes.push(
         prevTime + timePerImage * moveDuration,
         prevTime + timePerImage * moveDuration + timePerImage * pauseDuration
       );
@@ -135,11 +179,11 @@ function Carousal({ images, direction = "left", offset = 0 }) {
       <div style={{ transform: `translateX(${offset}px)` }}>
         <motion.div
           className="flex gap-6 w-max"
-          animate={{ x: keyframes }}
+          animate={shouldAnimate ? { x: keyframes } : { x: 0 }}
           transition={{
             duration: numImages * 6,
             ease: "easeInOut",
-            times: keyframesTimes,
+            times: keyframeTimes,
             repeat: Infinity,
             repeatType: "loop",
           }}
