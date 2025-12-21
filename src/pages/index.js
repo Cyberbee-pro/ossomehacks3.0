@@ -23,7 +23,7 @@ export default function HomePage() {
       </section>
       {/* TODO: TIMELINE COMPONENT IS CREATING MARGING ISSUE */}
       <section id="timeline">
-        {/* <TimeLine /> */}
+        <TimeLine />
         <MapBox />
       </section>
       
