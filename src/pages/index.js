@@ -12,10 +12,10 @@ export default function Home() {
     <>
       <About />
       <Themes />
-      <Sponsors />
       <MapBox />
-      <FAQSection />
       <Gallery />
+      <Sponsors />
+      <FAQSection />
       <ContactSection />
       {/* <div className="font-poppins text-textColor space-y-2">
         <p className="font-light text-yellow">Light (300)</p>
