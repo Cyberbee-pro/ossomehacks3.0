@@ -1,32 +1,34 @@
 import Themes from "@/components/themes/themes";
 import Image from "next/image";
+import Hero from "@/components/hero/Hero";
+import TimeLine from "@/components/timeLine/timeLine";
 import About from "@/components/about/about";
 import Sponsors from "@/components/sponsors/sponsors";
 import ContactSection from "@/components/contactUs/contactUs";
 import MapBox from "@/components/timeLine/mapbox";
+import FAQSection from "@/components/faq/FAQSection";
+import Gallery from "@/components/gallery/demo";
 
 export default function HomePage() {
   return (
     <>
-      <section id="home" className="min-h-screen pt-32">
-        {}
-      </section>
-
-      <section id="themes" className="min-h-screen pt-32">
-        <Themes />
-      </section>
-
-      <section id="timeline" className="min-h-screen pt-32">
-        <MapBox />
-      </section>
-
-      <section id="gallery" className="min-h-screen pt-32">
-        {}
-      </section>
-
-      <section id="faqs" className="min-h-screen pt-32">
-        {}
-      </section>
+      <Hero />
+      <About />
+      <Themes />
+      <TimeLine/>
+      <MapBox />
+      <Gallery />
+      <Sponsors />
+      <FAQSection />
+      <ContactSection />
+      {/* <div className="font-poppins text-textColor space-y-2">
+        <p className="font-light text-yellow">Light (300)</p>
+        <p className="font-normal text-text">Regular (400)</p>
+        <p className="font-medium text-navy">Medium (500)</p>
+        <p className="font-semibold text-black-custom">Semi Bold (600)</p>
+        <p className="font-bold text-green-custom">Bold (700)</p>
+      </div>
+      </div> */}
     </>
   );
 }

@@ -1,3 +1,35 @@
+/* Hero elephants unified style for all screens */
+.hero-elephant {
+  position: absolute;
+  bottom: 22%;
+  width: clamp(44px,18vw,80px);
+  height: clamp(32px,13vw,60px);
+  z-index: 2;
+}
+.hero-elephant-left {
+  left: 8vw;
+}
+.hero-elephant-right {
+  right: 8vw;
+  transform: scaleX(-1);
+}
+/* Hero tomb background responsive fix */
+.hero-tomb-bg {
+  height: 100% !important;
+  min-height: 100svh !important;
+}
+.hero-tomb-img {
+  object-fit: cover !important;
+  object-position: top center !important;
+}
+.ossome-margin {
+  margin-bottom: -18px;
+}
+@media (max-width: 900px) {
+  .ossome-margin {
+    margin-bottom: -8px;
+  }
+}
 @import "tailwindcss";
 
 :root {
