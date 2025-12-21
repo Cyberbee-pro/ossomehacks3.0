@@ -9,7 +9,7 @@ import MapBox from "@/components/timeLine/mapbox";
 import FAQSection from "@/components/faq/FAQSection";
 import Gallery from "@/components/gallery/demo";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
       <Hero />
@@ -18,7 +18,6 @@ export default function Home() {
       <TimeLine/>
       <MapBox />
       <Gallery />
-      <Sponsors />
       <Sponsors />
       <FAQSection />
       <ContactSection />
