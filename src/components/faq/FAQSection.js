@@ -1,4 +1,3 @@
-// components/FAQSection.jsx
 'use client'
 
 import { useEffect, useState } from 'react'

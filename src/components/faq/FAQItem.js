@@ -1,4 +1,3 @@
-// components/FAQItem.jsx
 'use client'
 
 import { useState } from 'react'

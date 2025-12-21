@@ -1,4 +1,3 @@
-// components/FAQAccordion.jsx
 import FAQItem from './FAQItem'
 
 export default function FAQAccordion({ items }) {
