@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { FiChevronDown, FiChevronUp } from 'react-icons/fi'
 
 export default function FAQItem({ question, answer }) {
   const [open, setOpen] = useState(false)
@@ -13,7 +14,9 @@ export default function FAQItem({ question, answer }) {
         aria-expanded={open}
       >
         {question}
-        <span>{open ? '-' : '+'}</span>
+        <span className="ml-2">
+          {open ? <FiChevronUp /> : <FiChevronDown />}
+        </span>
       </button>
 
       {open && (

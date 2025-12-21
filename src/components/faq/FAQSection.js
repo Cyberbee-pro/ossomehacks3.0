@@ -1,18 +1,13 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import FAQCategories from './FAQCategories'
 import FAQAccordion from './FAQAccordian'
+import { faq_data } from '@/data/faq' // adjust path if needed
 
 export default function FAQSection() {
-  const [faqs, setFaqs] = useState([])
+  const [faqs] = useState(faq_data)
   const [category, setCategory] = useState('General')
-
-  useEffect(() => {
-    fetch('https://debojyoti-projects.free.beeceptor.com/faq-gcsrm-os3.0')
-      .then(res => res.json())
-      .then(setFaqs)
-  }, [])
 
   const categories = [...new Set(faqs.map(f => f.category))]
   const filtered = faqs.filter(f => f.category === category)
