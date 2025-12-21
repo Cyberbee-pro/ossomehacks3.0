@@ -1,5 +1,6 @@
 import Themes from "@/components/themes/themes";
 import Image from "next/image";
+import TimeLine from "@/components/timeLine/timeLine";
 import About from "@/components/about/about";
 import Sponsors from "@/components/sponsors/sponsors";
 import ContactSection from "@/components/contactUs/contactUs";
@@ -12,8 +13,10 @@ export default function Home() {
     <>
       <About />
       <Themes />
+      <TimeLine/>
       <MapBox />
       <Gallery />
+      <Sponsors />
       <Sponsors />
       <FAQSection />
       <ContactSection />
