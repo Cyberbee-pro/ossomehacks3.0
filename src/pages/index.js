@@ -12,23 +12,33 @@ import Gallery from "@/components/gallery/demo";
 export default function HomePage() {
   return (
     <>
-      <Hero />
-      <About />
-      <Themes />
-      <TimeLine/>
-      <MapBox />
-      <Gallery />
-      <Sponsors />
-      <FAQSection />
-      <ContactSection />
-      {/* <div className="font-poppins text-textColor space-y-2">
-        <p className="font-light text-yellow">Light (300)</p>
-        <p className="font-normal text-text">Regular (400)</p>
-        <p className="font-medium text-navy">Medium (500)</p>
-        <p className="font-semibold text-black-custom">Semi Bold (600)</p>
-        <p className="font-bold text-green-custom">Bold (700)</p>
-      </div>
-      </div> */}
+      <section id="home" className="">
+        <Hero />
+      </section>
+      <section id="about">
+        <About />
+      </section>
+      <section id="themes">
+        <Themes />
+      </section>
+      {/* TODO: TIMELINE COMPONENT IS CREATING MARGING ISSUE */}
+      <section id="timeline">
+        {/* <TimeLine /> */}
+        <MapBox />
+      </section>
+      
+      <section id="gallery">
+        <Gallery />
+      </section>
+      <section id="sponsors">
+        <Sponsors />
+      </section>
+      <section id="faq">
+        <FAQSection />
+      </section>
+      <section id="contact">
+        <ContactSection />
+      </section>
     </>
   );
 }
