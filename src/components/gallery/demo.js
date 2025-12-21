@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 
-const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
-
+// Gallery image paths
 const images = [
   "/gallery/DSC_0076.JPG",
   "/gallery/DSC_0083.JPG",
@@ -14,104 +14,153 @@ const images = [
   "/gallery/IMG_4879.JPG",
 ];
 
-export default function Gallery() {
-  const videoRef = useRef(null);
-  const containerRef = useRef(null);
-  
-  const [scale, setScale] = useState(0.5);
-  const [minHeight, setMinHeight] = useState(0);
+export default function GalleryHero() {
+  // Reference to the scroll section
+  const sectionRef = useRef(null);
 
-  const baseSize = useRef({ w: 0, h: 0 });
+  // Track scroll progress within section
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"],
+  });
 
-  useEffect(() => {
-    if (!videoRef.current) return;
+  // Animate container size based on scroll
+  const width = useTransform(scrollYProgress, [0.25, 0.75], ["72vw", "100vw"]);
+  const height = useTransform(scrollYProgress, [0.25, 0.75], ["40vh", "100vh"]);
 
-    const updateMetrics = () => {
-      if (videoRef.current) {
-        baseSize.current = {
-          w: videoRef.current.offsetWidth,
-          h: videoRef.current.offsetHeight,
-        };
-      }
-    };
+  // Animate border radius (rounded → full screen)
+  const radius = useTransform(scrollYProgress, [0.25, 0.75], [48, 0]);
 
-    const handleScroll = () => {
-      if (!videoRef.current || !containerRef.current) return;
-
-      const rect = videoRef.current.getBoundingClientRect();
-      const {innerHeight: vh, innerWidth: vw} = window;
-
-      if (rect.top < -vh || rect.top > vh) return;
-
-      const videoCenter = rect.top + rect.height/2;
-      const centerOffset = (vh/2) - videoCenter + (vh/2) - 50;
-      const progress = clamp(centerOffset / (vh*0.5), 0, 1);
-
-      const currentBase = baseSize.current;
-      const maxScale = Math.max(vw/currentBase.w, vh/currentBase.h);
-
-      setScale(0.5 + progress * (maxScale - 0.5));
-      setMinHeight(progress *100);
-    };
-
-    updateMetrics();
-    
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", updateMetrics);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", updateMetrics);
-    };
-}, []);
-
-return (
-    <section className="bg-background overflow-hidden">
-      <div className="pt-24 pb-12">
-        <h2 className="text-center text-5xl md:text-8xl font-bold text-yellow">
-          Our Journey So Far
-        </h2>
-      </div>
-
-      <div
-        ref={containerRef}
-        style={{ minHeight: `${minHeight}vh` }}
-        className="mt-4 flex items-center justify-center transition-[min-height] duration-500 ease-out">
-        <div
-          ref={videoRef}
-          style={{ transform: `scale(${scale})` }}
-          className="w-[70vw] origin-center transition-transform duration-500 ease-out">
-          <video className="w-full rounded-2xl shadow-2xl"
-            autoPlay muted loop playsInline>
-            <source src="/gallery/journey.mp4" type="video/mp4" />
-          </video>
+  return (
+    <section className="bg-background">
+      {/* Scroll-controlled section */}
+      <motion.section ref={sectionRef} className="relative h-[300vh]">
+        
+        {/* Title */}
+        <div className="relative z-10 pt-20 pb-12 px-2 text-center">
+          <h2 className="text-5xl md:text-8xl font-bold font-poppins text-yellow">
+            Our Journey So Far
+          </h2>
         </div>
-      </div>
 
-      <div className="py-28 space-y-12">
-        <Carousal direction="left" />
-        <Carousal direction="right" />
-      </div>
+        {/* Sticky video container */}
+        <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden bg-background">
+          <motion.div
+            style={{ width, height, borderRadius: radius }}
+            className="relative z-20 overflow-hidden shadow-2xl will-change-transform"
+          >
+            {/* Background video */}
+            <video
+              className="object-cover"
+              style={{
+                position: "absolute",
+                left: "50%",
+                top: "50%",
+                transform: "translate(-50%, -50%)",
+                width: "100vw",
+                height: "100vh",
+              }}
+              autoPlay
+              muted
+              loop
+              playsInline
+            >
+              <source src="/gallery/journey.mp4" type="video/mp4" />
+            </video>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Infinite image carousels */}
+      <section className="py-36 space-y-4 overflow-hidden">
+        <Carousal images={images} direction="left" offset={20} />
+        <Carousal images={images} direction="right" offset={-200} />
+      </section>
     </section>
   );
 }
 
-function Carousal({ direction }) {
+function Carousal({ images, direction = "left", offset = 0 }) {
+  const loopImages = [...images, ...images];
+
+  // Measure one card width
+  const firstCardRef = useRef(null);
+
+  // Distance to slide per image in the carousal
+  const [slideDistance, setSlideDistance] = useState(0);
+
+  const numImages = images.length;
+
+  // Calculate distance to slideafter first render
+  useEffect(() => {
+    if (!firstCardRef.current) return;
+
+    const cardWidth = firstCardRef.current.offsetWidth;
+    const gap = 24;
+    setSlideDistance(cardWidth + gap);
+  }, []);
+
+  // Animation keyframes and timing
+  const keyframes = [];
+  const keyframesTimes = [];
+
+  if (!slideDistance) return null;
+
+  for (let i = 0; i <= numImages; i++) {
+    // Calculate x-position per step
+    const position =
+      direction === "left" ? -i * slideDistance : -slideDistance * (numImages - i);
+
+    // Hold position briefly before moving
+    keyframes.push(position, position);
+
+    const timePerImage = 1 / numImages;
+    const pauseDuration = 0.4;
+    const moveDuration = 0.6;
+
+    if (i === 0) {
+      keyframesTimes.push(0, timePerImage * pauseDuration);
+    } else {
+      const prevTime =keyframesTimes[keyframesTimes.length - 1];
+     keyframesTimes.push(
+        prevTime + timePerImage * moveDuration,
+        prevTime + timePerImage * moveDuration + timePerImage * pauseDuration
+      );
+    }
+  }
+
   return (
-    <div className="relative overflow-hidden">
-      <div className={`flex gap-6 w-max ${direction === "left" ? "scroll-left" : "scroll-right"}`}
-        style={{ animationDuration: "40s" }}>
-        {[...images, ...images].map((src, i) => (
-          <Image
-            key={i}
-            src={src}
-            alt="Gallery"
-            width={288}
-            height={176}
-            sizes="288px"
-            className="w-90 h-50 object-cover rounded-xl shadow-lg"
-          />
-        ))}
+    <div className="relative w-full overflow-hidden">
+      {/* Horizontal offset adjustment */}
+      <div style={{ transform: `translateX(${offset}px)` }}>
+        <motion.div
+          className="flex gap-6 w-max"
+          animate={{ x: keyframes }}
+          transition={{
+            duration: numImages * 6,
+            ease: "easeInOut",
+            times: keyframesTimes,
+            repeat: Infinity,
+            repeatType: "loop",
+          }}
+        >
+          {/* Render image cards */}
+          {loopImages.map((src, i) => (
+            <div
+              key={`${direction}-${i}`}
+              ref={i === 0 ? firstCardRef : null} // Measure first card only
+              className="relative flex-shrink-0 w-[260px] sm:w-[300px] md:w-[435px] aspect-video overflow-hidden rounded-2xl shadow-lg group cursor-pointer"
+            >
+              <Image
+                src={src}
+                alt="Gallery image"
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                sizes="(max-width: 640px) 260px, (max-width: 768px) 300px, 320px"
+              />
+            </div>
+          ))}
+        </motion.div>
       </div>
     </div>
   );
