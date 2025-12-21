@@ -1,10 +1,13 @@
 import Themes from "@/components/themes/themes";
 import Image from "next/image";
 import Hero from "@/components/hero/Hero";
+import TimeLine from "@/components/timeLine/timeLine";
 import About from "@/components/about/about";
 import Sponsors from "@/components/sponsors/sponsors";
 import ContactSection from "@/components/contactUs/contactUs";
 import MapBox from "@/components/timeLine/mapbox";
+import FAQSection from "@/components/faq/FAQSection";
+import Gallery from "@/components/gallery/demo";
 
 export default function Home() {
   return (
@@ -12,8 +15,12 @@ export default function Home() {
       <Hero />
       <About />
       <Themes />
-      <Sponsors />
+      <TimeLine/>
       <MapBox />
+      <Gallery />
+      <Sponsors />
+      <Sponsors />
+      <FAQSection />
       <ContactSection />
       {/* <div className="font-poppins text-textColor space-y-2">
         <p className="font-light text-yellow">Light (300)</p>
