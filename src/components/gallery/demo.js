@@ -43,7 +43,7 @@ export default function GalleryHero() {
     }
   }, [isInView]);
 
-  
+
   // OPTIONAL: Handle mute/unmute (enable if button is included)
   const toggleMute = () => {
     const video = videoRef.current;
@@ -53,7 +53,7 @@ export default function GalleryHero() {
     setIsMuted(newMutedState);
     video.muted = newMutedState;
   };
-  
+
 
   // Track scroll progress within section
   const { scrollYProgress } = useScroll({
@@ -72,7 +72,7 @@ export default function GalleryHero() {
     <section className="bg-background">
       {/* Scroll-controlled section */}
       <motion.section ref={sectionRef} className="relative h-[300vh]">
-        
+
         {/* Title */}
         <div className="relative z-10 pt-20 pb-12 px-2 text-center">
           <h2 className="text-5xl md:text-8xl font-bold font-poppins text-yellow">
@@ -100,15 +100,17 @@ export default function GalleryHero() {
             </video>
 
             {/* OPTIONAL: Mute / Unmute button (commented for review) */}
-            
+
             <button
               onClick={toggleMute}
               className="absolute bottom-6 right-6 z-30 bg-black/50 hover:bg-black/70 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
               aria-label={isMuted ? "Unmute video" : "Mute video"}
             >
-              {isMuted ? "🔇" : "🔊"}
+              {isMuted ?
+                <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M3 9h4l5-5v16l-5-5H3zm13.59 3L14 9.41L15.41 8L18 10.59L20.59 8L22 9.41L19.41 12L22 14.59L20.59 16L18 13.41L15.41 16L14 14.59z" /></svg> :
+                <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M5 6.5v11H1v-11zm2 11.71l8 4.5V1.29l-8 4.5zM21.581 7.78l-.602-.799l-1.596 1.206l.602.798a5 5 0 0 1-.002 6.03l-.603.797l1.595 1.206l.603-.797a7 7 0 0 0 .003-8.442" /><path fill="currentColor" d="m18.789 9.889l-.603-.798l-1.596 1.205l.603.798a1.5 1.5 0 0 1 0 1.809l-.604.797l1.595 1.207l.603-.798a3.5 3.5 0 0 0 .002-4.22" /></svg>}
             </button>
-            
+
           </motion.div>
         </div>
       </motion.section>
