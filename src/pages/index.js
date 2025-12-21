@@ -1,5 +1,6 @@
 import Themes from "@/components/themes/themes";
 import Image from "next/image";
+import Hero from "@/components/hero/Hero";
 import TimeLine from "@/components/timeLine/timeLine";
 import About from "@/components/about/about";
 import Sponsors from "@/components/sponsors/sponsors";
@@ -11,6 +12,7 @@ import Gallery from "@/components/gallery/demo";
 export default function Home() {
   return (
     <>
+      <Hero />
       <About />
       <Themes />
       <TimeLine/>
@@ -26,8 +28,8 @@ export default function Home() {
         <p className="font-medium text-navy">Medium (500)</p>
         <p className="font-semibold text-black-custom">Semi Bold (600)</p>
         <p className="font-bold text-green-custom">Bold (700)</p>
-        */
-      }
+      </div>
+      </div> */}
     </>
   );
 }
