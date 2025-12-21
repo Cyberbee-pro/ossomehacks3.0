@@ -73,7 +73,7 @@ return (
         {"<"}
         </button>
 
-        <div className="bg-navy rounded-lg min-w-[60vw]md:max-w-[60vw] text-center">
+        <div className="bg-navy rounded-lg w-75 shrink-0 text-center">
             <div className="p-5 text-white font-semibold">
                 {event.event}
             </div>
@@ -177,7 +177,7 @@ return (
                     )
                     :(index % 2 !== 0 ? (index === 1 ? "-top-12" // First odd (Index 1)
                             : (index % 4 === 1 ? "-top-20"
-                                : index % 6 === 5) ? "-top-30" : "-top-18 text-white/50" 
+                                : index % 6 === 5) ? "-top-30" : "-top-18 text-text" 
                             ) 
                     : (index===0 ? "top-10" // First Even (Index 0)
                     :index % 4 === 0 ? "top-20" 

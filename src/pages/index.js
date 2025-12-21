@@ -12,9 +12,9 @@ export default function Home() {
   return (
     <>
       <About />
-      <TimeLine/>
       <Themes />
       <Sponsors />
+      <TimeLine/>
       <MapBox />
       <FAQSection />
       <Gallery />
