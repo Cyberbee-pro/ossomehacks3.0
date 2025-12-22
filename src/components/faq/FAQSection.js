@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import FAQCategories from './FAQCategories'
 import FAQAccordion from './FAQAccordian'
-import { faq_data } from '@/data/faq' // adjust path if needed
+import { faq_data } from '@/data/faq'
 
 export default function FAQSection() {
   const [faqs] = useState(faq_data)
@@ -15,7 +15,7 @@ export default function FAQSection() {
   return (
     <section className="w-full px-4 py-8 flex justify-center">
       <div className="w-full max-w-3xl rounded-xl p-6">
-        <h2 className="text-center text-yellow text-5xl font-semibold mb-4">
+        <h2 className="text-center text-yellow text-5xl md:text-8xl font-bold pb-10">
           FAQs
         </h2>
 
