@@ -62,8 +62,8 @@ body {
 
 .hero-elephant {
   position: relative;
-  width: clamp(44px, 18vw, 80px);
-  height: clamp(32px, 13vw, 60px);
+  width: clamp(64px, 24vw, 140px);
+  height: clamp(48px, 18vw, 100px);
   z-index: 2;
   pointer-events: auto;
 }
@@ -85,7 +85,10 @@ body {
 
 .hero-tomb-img {
   object-fit: cover !important;
-  object-position: top center !important;
+  object-position: bottom center !important;
+  width: 100vw !important;
+  height: auto !important;
+  display: block;
 }
 
 .ossome-margin {
