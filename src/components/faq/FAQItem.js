@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { FiChevronDown, FiChevronUp } from 'react-icons/fi'
+import { FiChevronDown } from 'react-icons/fi'
+import { motion, AnimatePresence } from 'framer-motion'
 
 export default function FAQItem({ question, answer }) {
   const [open, setOpen] = useState(false)
@@ -14,16 +15,30 @@ export default function FAQItem({ question, answer }) {
         aria-expanded={open}
       >
         {question}
-        <span className="ml-2">
-          {open ? <FiChevronUp /> : <FiChevronDown />}
-        </span>
+        <motion.span
+          animate={{ rotate: open ? 180 : 0 }}
+          transition={{ duration: 0.2 }}
+          className="ml-2 block"
+        >
+          <FiChevronDown />
+        </motion.span>
       </button>
 
-      {open && (
-        <div className="px-4 py-3 bg-green-custom text-black-custom font-semibold text-sm">
-          {answer}
-        </div>
-      )}
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="overflow-hidden"
+          >
+            <div className="px-4 py-3 bg-green-custom text-black-custom font-semibold text-sm">
+              {answer}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }

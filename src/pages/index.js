@@ -7,7 +7,7 @@ import Sponsors from "@/components/sponsors/sponsors";
 import ContactSection from "@/components/contactUs/contactUs";
 import MapBox from "@/components/timeLine/mapbox";
 import FAQSection from "@/components/faq/FAQSection";
-import Gallery from "@/components/gallery/demo";
+import Gallery from "@/components/gallery/gallery";
 
 export default function HomePage() {
   return (
@@ -15,28 +15,33 @@ export default function HomePage() {
       <section id="home" className="">
         <Hero />
       </section>
-      <section id="about">
+
+      <section id="about" className="pt-20">
         <About />
       </section>
-      <section id="themes">
+
+      <section id="themes" className="pt-14">
         <Themes />
       </section>
-      {/* TODO: TIMELINE COMPONENT IS CREATING MARGING ISSUE */}
-      <section id="timeline">
+
+      <section id="timeline" className="pt-20">
         <TimeLine />
         <MapBox />
       </section>
-      
-      <section id="gallery">
+
+      <section id="gallery" className="pt-20">
         <Gallery />
       </section>
-      <section id="sponsors">
+
+      <section id="sponsors" className="pt-8">
         <Sponsors />
       </section>
-      <section id="faq">
+
+      <section id="faq" className="pt-20">
         <FAQSection />
       </section>
-      <section id="contact">
+
+      <section id="contact" className="pt-20">
         <ContactSection />
       </section>
     </>
