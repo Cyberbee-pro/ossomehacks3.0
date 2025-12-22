@@ -5,7 +5,7 @@ import HeroButtons from './HeroButtons';
 export default function Hero() {
   return (
     <section 
-      className="hero-section" 
+      className="hero-section"
       style={{
         position: 'relative',
         width: '100vw',
@@ -37,7 +37,7 @@ export default function Hero() {
           right: 0,
           bottom: 0,
           width: '100vw',
-          height: '100vh', 
+          height: '100vh',
           zIndex: 1,
           pointerEvents: 'none',
           overflow: 'hidden'
@@ -54,41 +54,21 @@ export default function Hero() {
         />
       </div>
 
-      {/* Left Elephant */}
-      <div className="hero-elephant hero-elephant-left">
-        <Image
-          src="/hero/hero-elephant.svg"
-          alt="Decorative elephant"
-          fill
-          style={{ objectFit: 'contain' }}
-          priority
-          unoptimized
-        />
-      </div>
-
-      {/* Right Elephant */}
-      <div className="hero-elephant hero-elephant-right">
-        <Image
-          src="/hero/hero-elephant.svg"
-          alt="Decorative elephant"
-          fill
-          style={{ objectFit: 'contain' }}
-          priority
-          unoptimized
-        />
-      </div>
-
       {/* Main Content Container */}
-      <div style={{
-        position: 'relative',
-        zIndex: 3,
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        maxWidth: '1200px',
-        width: '100%',
-        marginTop: 'clamp(-120px, -16vw, -200px)'
-      }}>
+      <div
+        className="hero-content-center"
+        style={{
+          position: 'relative',
+          zIndex: 3,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '100%',
+          minHeight: '60vh',
+          flex: 1,
+        }}
+      >
         {/* Main Title Text -OSSOME */}
         <div
           style={{
@@ -97,7 +77,7 @@ export default function Hero() {
             flexDirection: 'column',
             alignItems: 'center',
             marginBottom: '0px',
-            marginTop: 'clamp(10px, 7vw, 120px)', // more responsive
+            marginTop: 'clamp(10px, 7vw, 120px)',
           }}
         >
           {/* OSSOME text */}
@@ -113,7 +93,7 @@ export default function Hero() {
             position: 'relative',
             left: 'clamp(32px,8vw,96px)',
             top: '0',
-            marginBottom: 'clamp(-14px,-2vw,2px)' // closest spacing yet
+            marginBottom: 'clamp(-14px,-2vw,2px)'
           }}>
             OSSOME
           </div>
@@ -138,8 +118,8 @@ export default function Hero() {
             {/* Version Badge "3" */}
             <div style={{
               position: 'absolute',
-              left: 'calc(100% + 4px)', 
-              top: 'clamp(8px,2vw,24px)', 
+              left: 'calc(100% + 4px)',
+              top: 'clamp(8px,2vw,24px)',
               height: '100%',
               maxWidth: 'clamp(65px,8vw,95px)',
               width: 'auto',
@@ -167,7 +147,7 @@ export default function Hero() {
           color: '#1f4047',
           textAlign: 'center',
           marginBottom: 'clamp(6px,2vw,15px)',
-          marginTop: 'clamp(12px,2vw,24px)', 
+          marginTop: 'clamp(12px,2vw,24px)',
           maxWidth: '90vw',
           lineHeight: 'normal'
         }}>
@@ -187,6 +167,30 @@ export default function Hero() {
         {/* Timer */}
         <div style={{ marginTop: '0px', marginBottom: '0px' }}>
           <Timer />
+        </div>
+      </div>
+
+      {/* Elephants Wrapper at bottom, above cream area */}
+      <div className="hero-elephants-wrapper">
+        <div className="hero-elephant hero-elephant-left">
+          <Image
+            src="/hero/hero-elephant.svg"
+            alt="Decorative elephant"
+            fill
+            style={{ objectFit: 'contain' }}
+            priority
+            unoptimized
+          />
+        </div>
+        <div className="hero-elephant hero-elephant-right">
+          <Image
+            src="/hero/hero-elephant.svg"
+            alt="Decorative elephant"
+            fill
+            style={{ objectFit: 'contain' }}
+            priority
+            unoptimized
+          />
         </div>
       </div>
     </section>

@@ -43,20 +43,37 @@ body {
 }
 
 /* Hero elephants unified style for all screens */
-.hero-elephant {
+
+.hero-elephants-wrapper {
   position: absolute;
-  bottom: 22%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  z-index: 2;
+  pointer-events: none;
+  padding-left: 8vw;
+  padding-right: 8vw;
+  padding-bottom: clamp(2vw, 3.5vh, 32px);
+}
+
+.hero-elephant {
+  position: relative;
   width: clamp(44px, 18vw, 80px);
   height: clamp(32px, 13vw, 60px);
   z-index: 2;
+  pointer-events: auto;
 }
+
 
 .hero-elephant-left {
-  left: 8vw;
 }
 
+
 .hero-elephant-right {
-  right: 8vw;
   transform: scaleX(-1);
 }
 
