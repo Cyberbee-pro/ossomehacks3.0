@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import Timer from './Timer';
 import HeroButtons from './HeroButtons';
+import AnimatedHacks from './AnimatedHacks';
 
 export default function Hero() {
   return (
@@ -38,7 +39,8 @@ export default function Hero() {
           >
             OSSOME
           </div>
-          {/* hacks text */}
+
+
           <div className="relative inline-block">
             <div
               className="font-poppins font-bold text-center text-[clamp(72px,19vw,232px)] leading-[1] text-[#1f4047]"
@@ -50,27 +52,27 @@ export default function Hero() {
             >
               हैक्स
             </div>
-            {/* Version Badge "3" */}
-            <div
-              className="absolute flex items-start justify-start"
-              style={{
-                left: 'calc(100% + 4px)',
-                top: 'clamp(8px,2vw,24px)',
-                height: '100%',
-                maxWidth: 'clamp(65px,8vw,95px)',
-                width: 'auto',
-                aspectRatio: '120/190',
-              }}
-            >
-              <Image
-                src="/hero/hero-version-bg.svg"
-                alt="3.0"
-                fill
-                style={{ objectFit: 'contain', height: '100%' }}
-                unoptimized
-              />
-            </div>
+          <div
+            className="absolute flex items-start justify-start"
+            style={{
+              left: 'calc(100% + 4px)',
+              top: 'clamp(8px,2vw,24px)',
+              height: '100%',
+              maxWidth: 'clamp(65px,8vw,95px)',
+              width: 'auto',
+              aspectRatio: '120/190',
+            }}
+          >
+            <Image
+              src="/hero/hero-version-bg.svg"
+              alt="3.0"
+              fill
+              style={{ objectFit: 'contain', height: '100%' }}
+              unoptimized
+            />
           </div>
+        </div>  
+          {/* <AnimatedHacks /> */}
         </div>
 
         {/* Subtitle */}
@@ -117,6 +119,6 @@ export default function Hero() {
           />
         </div>
       </div>
-    </section>
+    </section >
   );
 }
