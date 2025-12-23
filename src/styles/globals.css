@@ -41,3 +41,62 @@ body {
   color: var(--foreground);
   font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
 }
+
+/* Hero elephants unified style for all screens */
+
+.hero-elephants-wrapper {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  z-index: 2;
+  pointer-events: none;
+  padding-left: 8vw;
+  padding-right: 8vw;
+  padding-bottom: clamp(2vw, 3.5vh, 32px);
+}
+
+.hero-elephant {
+  position: relative;
+  width: clamp(64px, 24vw, 140px);
+  height: clamp(48px, 18vw, 100px);
+  z-index: 2;
+  pointer-events: auto;
+}
+
+
+.hero-elephant-left {
+}
+
+
+.hero-elephant-right {
+  transform: scaleX(-1);
+}
+
+/* Hero tomb background responsive fix */
+.hero-tomb-bg {
+  height: 100% !important;
+  min-height: 100svh !important;
+}
+
+.hero-tomb-img {
+  object-fit: cover !important;
+  object-position: bottom center !important;
+  width: 100vw !important;
+  height: auto !important;
+  display: block;
+}
+
+.ossome-margin {
+  margin-bottom: -18px;
+}
+
+@media (max-width: 900px) {
+  .ossome-margin {
+    margin-bottom: -8px;
+  }
+}

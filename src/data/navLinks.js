@@ -1,9 +1,5 @@
 export const navLinks = [
     {
-        name: "Home",
-        link: "/"
-    },
-    {
         name: "About",
         link: "#about"
     },
@@ -16,16 +12,12 @@ export const navLinks = [
         link: "#timeline"
     },
     {
-        name: "Prizes",
-        link: "#prizes"
+        name: "Gallery",
+        link: "#gallery"
     },
     {
         name: "Sponsors",
         link: "#sponsors"
-    },
-    {
-        name: "Gallery",
-        link: "#gallery"
     },
     {
         name: "FAQ",
