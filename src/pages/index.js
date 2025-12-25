@@ -8,10 +8,12 @@ import ContactSection from "@/components/contactUs/contactUs";
 import MapBox from "@/components/timeLine/mapbox";
 import FAQSection from "@/components/faq/FAQSection";
 import Gallery from "@/components/gallery/gallery";
+import Seo from "@/components/shared/Seo";
 
 export default function HomePage() {
   return (
     <>
+      <Seo />
       <section id="home" className="">
         <Hero />
       </section>
