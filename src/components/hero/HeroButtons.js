@@ -1,35 +1,27 @@
 import Image from "next/image";
+import React from "react";
 
 export default function HeroButtons() {
+  React.useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://apply.devfolio.co/v2/sdk.js';
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    }
+  }, []);
+
   return (
     <div className="mt-4 mb-8 flex flex-wrap items-center justify-center gap-4 font-poppins">
 
       {/* Devfolio Button */}
-      <button
-        onClick={() => window.open("https://devfolio.co", "_blank")}
-        className="
-          flex items-center gap-3
-          min-h-[48px]
-          px-6
-          rounded-lg
-          bg-black-custom text-text font-semibold
-          text-sm sm:text-base
-          transition-transform duration-200
-          hover:scale-105
-        "
-      >
-        <span className="relative h-5 w-5">
-          <Image
-            src="/hero/hero-devfolio-icon.svg"
-            alt=""
-            width={20}
-            height={20}
-            className="object-contain"
-            unoptimized
-          />
-        </span>
-        Apply with Devfolio
-      </button>
+      <div 
+        className="apply-button" 
+        data-hackathon-slug="ossome-hacks" 
+        data-button-theme="dark"
+      ></div>
 
       {/* Discord Button */}
       <button
