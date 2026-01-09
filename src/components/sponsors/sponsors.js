@@ -117,11 +117,10 @@ export default function Demo() {
                           max-w-full
                           ${LOGO_HEIGHT[tier]}
                           ${config.filter}
-                          ${
-                            tier === "Bronze" &&
+                          ${tier === "Bronze" &&
                             sponsor.name?.toLowerCase().includes("swoc")
-                              ? "max-h-[190px] max-w-[120%]"
-                              : ""
+                            ? "max-h-[190px] max-w-[120%]"
+                            : ""
                           }
                         `}
                         onError={e => {
@@ -138,3 +137,128 @@ export default function Demo() {
     </section>
   );
 }
+
+// import { useEffect, useState } from "react";
+// import Image from "next/image";
+// import { apiLinks } from "../../data/apiLinks";
+
+// export default function Sponsors() {
+//     const [sponsorsData, setSponsorsData] = useState({});
+//     const [loading, setLoading] = useState(true);
+//     const [error, setError] = useState(null);
+
+//     useEffect(() => {
+//         const fetchSponsors = async () => {
+//             try {
+//                 setLoading(true);
+//                 const res = await fetch(apiLinks.getSponsors);
+//                 if (!res.ok) throw new Error("Failed to fetch sponsors");
+//                 const json = await res.json();
+
+//                 const data = Array.isArray(json?.data) ? json.data : [];
+
+//                 // Group by tier
+//                 const grouped = data.reduce((acc, sponsor) => {
+//                     const tier = sponsor.tier || "Bronze";
+//                     // Capitalize first letter for display
+//                     const displayTier = tier.charAt(0).toUpperCase() + tier.slice(1).toLowerCase();
+
+//                     if (!acc[displayTier]) acc[displayTier] = [];
+//                     acc[displayTier].push(sponsor);
+//                     return acc;
+//                 }, {});
+
+//                 setSponsorsData(grouped);
+//             } catch (err) {
+//                 setError(err.message);
+//                 console.error("Error fetching sponsors:", err);
+//             } finally {
+//                 setLoading(false);
+//             }
+//         };
+
+//         fetchSponsors();
+//     }, []);
+//     const sortedTiers = Object.keys(sponsorsData).sort((a, b) => {
+//         const priority = { Platinum: 1, Gold: 2, Silver: 3, Bronze: 4 };
+//         return (priority[a] || 99) - (priority[b] || 99);
+//     });
+
+//     if (loading) {
+//         return (
+//             <section className="relative w-full overflow-hidden bg-background px-4 py-16 md:py-24">
+//                 <div className="mx-auto flex max-w-[1440px] flex-col items-center">
+//                     <div className="mb-16 h-12 w-64 animate-pulse rounded bg-text/20 md:h-24 md:w-96"></div>
+//                     <div className="flex w-full flex-col gap-12">
+//                         {[1, 2, 3].map((i) => (
+//                             <div key={i} className="flex w-full flex-col">
+//                                 <div className="mb-4 h-8 w-32 animate-pulse rounded bg-text/20 md:h-12 md:w-48"></div>
+//                                 <div className="grid w-full grid-cols-1 p-[2px] md:grid-cols-2 lg:grid-cols-4">
+//                                     {[1, 2, 3, 4].map((j) => (
+//                                         <div
+//                                             key={j}
+//                                             className="flex h-[200px] w-full items-center justify-center border-2 border-text/10 bg-background p-4 -ml-[2px] -mt-[2px]"
+//                                         >
+//                                             <div className="h-20 w-40 animate-pulse rounded bg-text/10"></div>
+//                                         </div>
+//                                     ))}
+//                                 </div>
+//                             </div>
+//                         ))}
+//                     </div>
+//                 </div>
+//             </section>
+//         );
+//     }
+
+//     if (error) return null;
+
+//     if (sortedTiers.length === 0) return null;
+
+//     return (
+//         <section className="relative w-full overflow-hidden bg-background px-4 py-16 md:py-24">
+//             <div className="mx-auto flex max-w-[1440px] flex-col items-center">
+//                 <h2 className="mb-16 text-center font-poppins text-[48px] font-bold leading-none text-yellow md:text-[96px]">
+//                     Sponsors
+//                 </h2>
+
+//                 <div className="flex w-full flex-col gap-12">
+//                     {sortedTiers.map((tier) => {
+//                         const items = sponsorsData[tier];
+//                         if (!items || items.length === 0) return null;
+
+//                         return (
+//                             <div key={tier} className="flex w-full flex-col">
+//                                 <h3 className="mb-4 ml-4 text-left font-poppins text-[32px] font-semibold tracking-[2.4px] text-text md:ml-0 md:text-[48px]">
+//                                     {tier}
+//                                 </h3>
+
+//                                 <div className="grid w-full grid-cols-1 p-[2px] md:grid-cols-2 lg:grid-cols-4">
+//                                     {items.map((sponsor, idx) => (
+//                                         <a
+//                                             key={`${tier}-${idx}-${sponsor._id || sponsor.name}`}
+//                                             href={sponsor.link || "#"}
+//                                             target="_blank"
+//                                             rel="noreferrer"
+//                                             className="group relative flex h-[200px] w-full items-center justify-center overflow-hidden border-2 border-text bg-background p-4 transition-all duration-300 -ml-[2px] -mt-[2px] hover:z-10 hover:border-yellow"
+//                                         >
+//                                             <div className="relative h-[60%] w-[80%] transition-transform duration-300 group-hover:scale-110">
+//                                                 <Image
+//                                                     src={sponsor.logo}
+//                                                     alt={sponsor.alt || sponsor.name}
+//                                                     fill
+//                                                     className="object-contain"
+//                                                     sizes="(max-width: 768px) 100vw, 335px"
+//                                                 />
+//                                             </div>
+//                                         </a>
+//                                     ))}
+//                                 </div>
+//                             </div>
+//                         );
+//                     })}
+//                 </div>
+//             </div>
+//         </section>
+//     );
+// }
