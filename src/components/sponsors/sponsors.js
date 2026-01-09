@@ -78,7 +78,7 @@ export default function Demo() {
     <section className="py-16 px-4">
       <div className="max-w-[1440px] mx-auto flex flex-col items-center">
         <h2 className="mb-12 text-center font-poppins font-bold text-yellow text-5xl sm:text-7xl xl:text-8xl">
-          Past Sponsors
+          Sponsors
         </h2>
 
         {loading && <p className="text-text">Loading sponsors...</p>}
