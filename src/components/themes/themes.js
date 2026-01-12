@@ -40,7 +40,7 @@ const ThemeCard = ({ theme }) => {
 
   return (
     <motion.div
-      className={`relative w-[309px] h-[413px] -font-poppins cursor-pointer group`}
+      className={`relative isolate w-[309px] h-[413px] -font-poppins cursor-pointer group`}
       initial="rest"
       whileHover="hover"
       animate="rest"
@@ -53,7 +53,7 @@ const ThemeCard = ({ theme }) => {
         transition={{ type: "spring", stiffness: 300, damping: 15 }}
         className="relative w-full h-full"
       >
-        <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 -z-0">
           <Image
             src="/tracks/Stamp frame - Yellow.svg"
             alt="Stamp Frame"
@@ -82,7 +82,7 @@ const ThemeCard = ({ theme }) => {
             </motion.div>
 
             <motion.div
-              className="pointer-events-none absolute inset-4 border-[3px] border-dotted border-[#ffb900]"
+              className="pointer-events-none absolute inset-4 z-30 border-[3px] border-dotted border-[#ffb900]"
               variants={{
                 rest: { opacity: 0.8, scale: 1 },
                 hover: { opacity: 1, scale: 0.98 }
