@@ -3,34 +3,66 @@ import Image from 'next/image';
 
 export default function Timer() {
   const [timeLeft, setTimeLeft] = useState({
-    days: 25,
-    hours: 20,
-    minutes: 44,
-    seconds: 44
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
   });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [targetDate, setTargetDate] = useState(null);
 
+  // Fetch event date from API
   useEffect(() => {
-    const targetDate = new Date('2026-02-08T00:00:00').getTime();
+    async function fetchEventDate() {
+      try {
+        setLoading(true);
+        setError(null);
+        const res = await fetch('https://octacore.githubsrmist.in/api/events');
+        if (!res.ok) throw new Error('Failed to fetch event data');
+        const apiResponse = await res.json();
+        const events = Array.isArray(apiResponse.data) ? apiResponse.data : [];
+        const event = events.find(e => e.slug === 'ossomehacks3');
+        if (event && event.event_date) {
+          setTargetDate(new Date(event.event_date).getTime());
+        } else {
+          throw new Error('Event date not found');
+        }
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchEventDate();
+  }, []);
 
+  // Timer logic
+  useEffect(() => {
+    if (!targetDate) return;
     const timer = setInterval(() => {
       const now = new Date().getTime();
       const difference = targetDate - now;
-
       if (difference > 0) {
         const days = Math.floor(difference / (1000 * 60 * 60 * 24));
         const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
         setTimeLeft({ days, hours, minutes, seconds });
       } else {
         clearInterval(timer);
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       }
     }, 1000);
-
     return () => clearInterval(timer);
-  }, []);
+  }, [targetDate]);
+
+  if (loading) {
+    return <div className="timer-container">Loading timer...</div>;
+  }
+  if (error) {
+    return <div className="timer-container">Error: {error}</div>;
+  }
 
   return (
     <div className="timer-container" style={{
