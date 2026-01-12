@@ -137,21 +137,29 @@ const getHourFromTime = (timeStr) => {
 
 const EventObj = ({ EventList, activeIndex, setEventIndex }) => {
   return (
-    <div className="relative w-[79vw] h-2 bg-text">
+    <div className="relative w-[79vw] h-2 bg-text md:w-[90vw]">
       {EventList.map((event, index) => {
         const hour = getHourFromTime(event.time);
         const left = (hour / 24) * 100;
         
         const positionLeft =
-          EventList.length <= 7
+        EventList.length <= 4
+          ?(index===EventList.length-1?
+          left*.95:
+          index===1?
+          left*1
+          :left*.8 )      
+        :EventList.length <= 7
             ? left
             : index === 0
-            ? left * 0.5
+            ? left * 0.4
             : index === 1
-            ? left * 1
+            ? left * .89
             : index === 2
-            ? left * 1.1
-            : left * 1.3;
+            ? left * 1
+            : index==3
+            ?left * 1.23
+            :left*1.3;
         
         return (
           <button
@@ -160,8 +168,42 @@ const EventObj = ({ EventList, activeIndex, setEventIndex }) => {
             className="absolute top-1/2 -translate-y-1/2 group" // Added 'group' for hover effects if needed
             style={{ left: `${positionLeft}%` }}
           >
-            {/* --- THE DOT CONTAINER --- */}
-            <div className="relative flex items-center justify-center w-6 h-6">
+            
+
+              <div className={`absolute left-1/2 -translate-x-1/2 w-0.5 bg-text z-10 group-hover:bg-yellow/80
+                ${
+                    EventList.length <= 7
+                    ? (index % 2 !== 0
+                        ? (index % 4 === 1 ? "-top-full h-5 translate-y-2" : "-bottom-full h-19 -translate-y-1/2 bg-text/50")
+                        : (index % 4 === 2 ? "top-full h-3.5 -translate-y-1" : "top-full h-15 -translate-y-1 bg-text/50")
+                    )
+                    : (index % 2 !== 0
+                        ? (index === 1 ? "-top-full h-1 translate-y-6" // First odd (Index 1)
+                            : (index % 4 === 1 ? "-top-full h-20"
+                            : index % 6 === 5) 
+                            
+                            ? "-top-full h-20 -translate-y-12 bg-text/50 " 
+                            : "-top-full h-8 -translate-y-.5 bg-text"
+                            )
+                        : (index===0 ? "top-full h-4 -translate-y-1" //First Even (Index 0)
+                        :index % 4 === 0 ? "top-full h-15 -translate-y-1 bg-text/50"
+                        : (index % 6 === 2 ? "top-full h-2 -translate-y-1" : "top-full h-4 -translate-y-1 bg-text/50")
+                        )
+                    )
+                }
+                
+                ${
+                      index===activeIndex
+                      ?("bg-yellow")
+                      :("bg-text")
+                    }`}
+                
+            />
+
+
+
+                  {/* --- THE DOT CONTAINER --- */}
+            <div className="relative flex items-center justify-center w-6 h-6 z-10 group-hover:scale-150 transition-transform">
                 
               {/* 1. Base Static Dot (Always Visible as Gray) */}
               <div className="w-4 h-4 rounded-full bg-text absolute" />
@@ -182,28 +224,11 @@ const EventObj = ({ EventList, activeIndex, setEventIndex }) => {
               )}
             </div>
 
-              <div className={`absolute left-1/2 -translate-x-1/2 w-0.5 bg-text z-10
-                ${
-                    EventList.length <= 7
-                    ? (index % 2 !== 0
-                        ? (index % 4 === 1 ? "-top-full h-5 translate-y-2" : "-bottom-full h-19 -translate-y-1/2 ")
-                        : (index % 4 === 2 ? "top-full h-3.5 -translate-y-1" : "top-full h-15 -translate-y-1")
-                    )
-                    : (index % 2 !== 0
-                        ? (index === 1 ? "-top-full h-1 translate-y-6" // First odd (Index 1)
-                            : (index % 4 === 1 ? "-top-full h-20"
-                            : index % 6 === 5) ? "-top-full h-20 -translate-y-12 bg-text" : "-top-full h-8 -translate-y-.5 bg-text"
-                            )
-                        : (index===0 ? "top-full h-4 -translate-y-1" //First Even (Index 0)
-                        :index % 4 === 0 ? "top-full h-15 -translate-y-1"
-                        : (index % 6 === 2 ? "top-full h-2 -translate-y-1" : "top-full h-4 -translate-y-1")
-                        )
-                    )
-                }`}
-            />
+
+
 
             <div
-            className={`absolute left-1/2 -translate-x-1/2 text-xs text-text text-center w-32
+            className={`absolute left-1/2 -translate-x-1/2 text-xs text-text text-center w-32 group-hover:text-yellow/80 group-active:text-yellow
                 ${
                     EventList.length <= 7
                     ? (index % 2 !== 0
@@ -218,8 +243,14 @@ const EventObj = ({ EventList, activeIndex, setEventIndex }) => {
                     :index % 4 === 0 ? "top-20"
                     : (index % 6 === 2 ? "top-6" : "top-9"))
                     )
+                    }
+                    
+                    ${
+                      index===activeIndex
+                      ?("text-yellow")
+                      :("text-text")
                     }`}
-                >
+                    >
               {event.event}
               <br />
               <span className="opacity-70">{event.time}</span>
