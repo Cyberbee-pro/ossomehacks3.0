@@ -123,7 +123,7 @@ export default function GalleryHero() {
       </motion.section>
 
       {/* Infinite image carousels */}
-      <section className="pt-20 p- space-y-4 overflow-hidden">
+      <section className="pt-20 space-y-4 overflow-hidden">
         <Carousel images={images} direction="left" offset={20} />
         <Carousel images={images} direction="right" offset={-200} />
       </section>
