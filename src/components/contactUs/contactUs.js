@@ -195,9 +195,8 @@ export default function ContactSection() {
             >
               {status.loading ? "Sending..." : "Leave us a Message →"}
             </button>
-          </div>
 
-          <div className="text-center mb-6">
+          <div className="flex justify-center items-center p-3 text-center">
             <a
               href="https://github.com/MLH/mlh-policies/blob/main/code-of-conduct.md"
               target="_blank"
@@ -207,6 +206,10 @@ export default function ContactSection() {
               CODE OF CONDUCT
             </a>
           </div>
+
+          </div>
+
+          {/* it was here */}
         </div>
       </form>
     </section>
