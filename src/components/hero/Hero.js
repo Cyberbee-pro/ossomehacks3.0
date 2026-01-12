@@ -33,7 +33,7 @@ export default function Hero() {
               WebkitTextStroke: 'clamp(2.5px,0.8vw,8px) #1f4047',
               paintOrder: 'stroke fill',
               position: 'relative',
-              left: 'clamp(32px,8vw,96px)',
+              left: '12px',
               marginBottom: 'clamp(-14px,-2vw,2px)'
             }}
           >
@@ -41,7 +41,7 @@ export default function Hero() {
           </div>
 
 
-          <div className="relative inline-block">
+          <div className="relative flex items-start justify-center gap-[4px]">
             <div
               className="font-poppins font-bold text-center text-[clamp(72px,19vw,232px)] leading-[1] text-[#1f4047]"
               style={{
@@ -53,11 +53,10 @@ export default function Hero() {
               हैक्स
             </div>
           <div
-            className="absolute flex items-start justify-start"
+            className="relative flex items-start justify-start shrink-0"
             style={{
-              left: 'calc(100% + 4px)',
-              top: 'clamp(8px,2vw,24px)',
-              height: '100%',
+              marginTop: 'clamp(8px,2vw,24px)',
+              height: 'clamp(72px,19vw,232px)',
               maxWidth: 'clamp(65px,8vw,95px)',
               width: 'auto',
               aspectRatio: '120/190',
@@ -67,7 +66,7 @@ export default function Hero() {
               src="/hero/hero-version-bg.svg"
               alt="3.0"
               fill
-              style={{ objectFit: 'contain', height: '100%' }}
+              style={{ objectFit: 'contain' }}
               unoptimized
             />
           </div>
