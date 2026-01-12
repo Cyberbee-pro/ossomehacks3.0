@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function TimeLine() {
   return (
     // Added overflow-x-hidden to prevent scrollbar flickering if animations go slightly off-screen
-    <section className="flex flex-col w-full items-center justify-center gap-2 overflow-x-hidden">
+    <section className="flex flex-col py-3 w-full items-center justify-center gap-2 overflow-x-hidden">
       <Content />
     </section>
   );
