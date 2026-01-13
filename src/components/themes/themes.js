@@ -23,16 +23,25 @@ const THEMES = [
     id: 4,
     title: 'HealthTech',
     image: '/tracks/healthtech.png',
+    imageScale: 1.2,
+    imagePosition: 'object-center',
+    containerClass: 'mt-auto -mb-4',
   },
   {
     id: 5,
     title: 'Web3 & Crypto',
     image: '/tracks/web3.png',
+    imageScale: 1.1,
+    imagePosition: 'object-center',
+    containerClass: 'mt-auto -mb-4 ml-16',
   },
   {
     id: 6,
     title: 'Open Innovation',
     image: '/tracks/openinovation.png',
+    imageScale: 1.2,
+    imagePosition: 'object-center',
+    containerClass: 'mt-auto mb-5',
   },
 ];
 
@@ -109,10 +118,10 @@ const ThemeCard = ({ theme }) => {
             </motion.div>
 
             <motion.div
-              className="relative z-20 mt-auto mb-3 h-[260px] w-[214px]"
+              className={`relative z-20 ${theme.containerClass ?? 'mt-auto mb-3'} h-[260px] w-[214px]`}
               variants={{
-                rest: { y: 0, scale: 1 },
-                hover: { y: -15, scale: 1.1 }
+                rest: { y: 0, scale: theme.imageScale ?? 1 },
+                hover: { y: -15, scale: (theme.imageScale ?? 1) * 1.1 }
               }}
               transition={{ type: "spring", stiffness: 200, damping: 15 }}
             >
@@ -120,7 +129,7 @@ const ThemeCard = ({ theme }) => {
                 src={theme.image}
                 alt={theme.title}
                 fill
-                className="object-contain object-bottom"
+                className={`object-contain ${theme.imagePosition ?? 'object-bottom'}`}
               />
             </motion.div>
           </div>
