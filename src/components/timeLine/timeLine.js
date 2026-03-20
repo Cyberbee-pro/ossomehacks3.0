@@ -38,7 +38,7 @@ const Content = () => {
             animate={{ y: "0%", opacity: 1, filter: "blur(0px)" }}
             exit={{ y: "-100%", opacity: 0, filter: "blur(10px)" }}
             transition={{ duration: 0.5, type: "spring", bounce: 0.2 }}
-            
+
             className="text-yellow text-4xl md:text-5xl absolute left-0 right-0 mx-auto text-center w-full"
           >
             {dayData.day} - {dayData.date}
@@ -67,44 +67,44 @@ const Content = () => {
     FEED 
 ====================== */
 const Feed = ({ events, eventIndex, setEventIndex }) => {
-const event = events[eventIndex];
+  const event = events[eventIndex];
 
-if (!event) {
+  if (!event) {
     return <div className="text-gray-400">No public events</div>;
-}
+  }
 
-return (
+  return (
     <div className="flex gap-4 items-center">
-        <button
+      <button
         onClick={() => setEventIndex(i => Math.max(i - 1, 0))}
         disabled={eventIndex === 0}
         className={`p-4 py-2 rounded-full text-black
             ${eventIndex === 0 ? "bg-text/30" : "bg-text"}`}
-        >
+      >
         {"<"}
-        </button>
+      </button>
 
-        <div className="bg-navy rounded-lg w-75 shrink-0 text-center">
-            <div className="p-5 text-white font-semibold">
-                {event.event}
-            </div>
-            <div className="bg-text text-black p-4 rounded-b-lg">
-                {event.time} at {event.location}
-            </div>
+      <div className="bg-navy rounded-lg w-75 shrink-0 text-center">
+        <div className="p-5 text-white font-semibold">
+          {event.event}
         </div>
+        <div className="bg-text text-black p-4 rounded-b-lg">
+          {event.time} - {event.location}
+        </div>
+      </div>
 
-        <button
-            onClick={() =>
-            setEventIndex(i => Math.min(i + 1, events.length - 1))
+      <button
+        onClick={() =>
+          setEventIndex(i => Math.min(i + 1, events.length - 1))
         }
         disabled={eventIndex === events.length - 1}
         className={`p-4 py-2 rounded-full text-black
             ${eventIndex === events.length - 1 ? "bg-text/30" : "bg-text"}`}
-        >
+      >
         {">"}
-        </button>
+      </button>
     </div>
-    );
+  );
 };
 
 
@@ -112,27 +112,27 @@ return (
     TimeLine Bar
 ====================== */
 const TimeBar = ({ publicEvents, activeIndex, setEventIndex }) => {
-return (
+  return (
     <div className="flex m-25 items-center">
-        <div className="w-5 h-5 bg-text rotate-45" />
-        <EventObj
+      <div className="w-5 h-5 bg-text rotate-45" />
+      <EventObj
         EventList={publicEvents}
         activeIndex={activeIndex}
         setEventIndex={setEventIndex}
-        />
-        <div className="w-5 h-5 bg-text rotate-45 " />
+      />
+      <div className="w-5 h-5 bg-text rotate-45 " />
     </div>
-);
+  );
 };
 
 const getHourFromTime = (timeStr) => {
-    const [time, mod] = timeStr.split(" ");
-    let [h] = time.split(":").map(Number);
-    if (mod === "PM" && h !== 12) 
-        h += 12;
-    if (mod === "AM" && h === 12) 
-        h = 0;
-    return h;
+  const [time, mod] = timeStr.split(" ");
+  let [h] = time.split(":").map(Number);
+  if (mod === "PM" && h !== 12)
+    h += 12;
+  if (mod === "AM" && h === 12)
+    h = 0;
+  return h;
 };
 
 const EventObj = ({ EventList, activeIndex, setEventIndex }) => {
@@ -141,26 +141,25 @@ const EventObj = ({ EventList, activeIndex, setEventIndex }) => {
       {EventList.map((event, index) => {
         const hour = getHourFromTime(event.time);
         const left = (hour / 24) * 100;
-        
+
         const positionLeft =
-        EventList.length <= 4
-          ?(index===EventList.length-1?
-          left*.95:
-          index===1?
-          left*1
-          :left*.8 )      
-        :EventList.length <= 7
-            ? left
-            : index === 0
-            ? left * 0.4
-            : index === 1
-            ? left * .89
-            : index === 2
-            ? left * 1
-            : index==3
-            ?left * 1.23
-            :left*1.3;
-        
+          EventList.length <= 4
+            ? (index === 0 ? left * 0.6 :
+              index === 1 ? left * 0.9 :
+                index === 2 ? left * 1.25 :
+                  left * 1.25)
+            : EventList.length <= 7
+              ? left
+              : index === 0
+                ? left * 0.4
+                : index === 1
+                  ? left * .89
+                  : index === 2
+                    ? left * 1
+                    : index == 3
+                      ? left * 1.23
+                      : left * 1.3;
+
         return (
           <button
             key={index}
@@ -168,43 +167,41 @@ const EventObj = ({ EventList, activeIndex, setEventIndex }) => {
             className="absolute top-1/2 -translate-y-1/2 group" // Added 'group' for hover effects if needed
             style={{ left: `${positionLeft}%` }}
           >
-            
 
-              <div className={`absolute left-1/2 -translate-x-1/2 w-0.5 bg-text z-10 group-hover:bg-yellow/80
-                ${
-                    EventList.length <= 7
-                    ? (index % 2 !== 0
-                        ? (index % 4 === 1 ? "-top-full h-5 translate-y-2" : "-bottom-full h-19 -translate-y-1/2 bg-text/50")
-                        : (index % 4 === 2 ? "top-full h-3.5 -translate-y-1" : "top-full h-15 -translate-y-1 bg-text/50")
-                    )
-                    : (index % 2 !== 0
-                        ? (index === 1 ? "-top-full h-1 translate-y-6" // First odd (Index 1)
-                            : (index % 4 === 1 ? "-top-full h-20"
-                            : index % 6 === 5) 
-                            
-                            ? "-top-full h-20 -translate-y-12 bg-text/50 " 
-                            : "-top-full h-8 -translate-y-.5 bg-text"
-                            )
-                        : (index===0 ? "top-full h-4 -translate-y-1" //First Even (Index 0)
-                        :index % 4 === 0 ? "top-full h-15 -translate-y-1 bg-text/50"
-                        : (index % 6 === 2 ? "top-full h-2 -translate-y-1" : "top-full h-4 -translate-y-1 bg-text/50")
-                        )
-                    )
-                }
+
+            <div className={`absolute left-1/2 -translate-x-1/2 w-0.5 bg-text z-10 group-hover:bg-yellow/80
+                ${EventList.length <= 7
+                ? (index % 2 !== 0
+                  ? (index % 4 === 1 ? "-top-full h-5 translate-y-2" : "-bottom-full h-19 -translate-y-1/2 bg-text/50")
+                  : (index % 4 === 2 ? "top-full h-3.5 -translate-y-1" : "top-full h-15 -translate-y-1 bg-text/50")
+                )
+                : (index % 2 !== 0
+                  ? (index === 1 ? "-top-full h-1 translate-y-6" // First odd (Index 1)
+                    : (index % 4 === 1 ? "-top-full h-20"
+                      : index % 6 === 5)
+
+                      ? "-top-full h-20 -translate-y-12 bg-text/50 "
+                      : "-top-full h-8 -translate-y-.5 bg-text"
+                  )
+                  : (index === 0 ? "top-full h-4 -translate-y-1" //First Even (Index 0)
+                    : index % 4 === 0 ? "top-full h-15 -translate-y-1 bg-text/50"
+                      : (index % 6 === 2 ? "top-full h-2 -translate-y-1" : "top-full h-4 -translate-y-1 bg-text/50")
+                  )
+                )
+              }
                 
-                ${
-                      index===activeIndex
-                      ?("bg-yellow")
-                      :("bg-text")
-                    }`}
-                
+                ${index === activeIndex
+                ? ("bg-yellow")
+                : ("bg-text")
+              }`}
+
             />
 
 
 
-                  {/* --- THE DOT CONTAINER --- */}
+            {/* --- THE DOT CONTAINER --- */}
             <div className="relative flex items-center justify-center w-6 h-6 z-10 group-hover:scale-150 transition-transform">
-                
+
               {/* 1. Base Static Dot (Always Visible as Gray) */}
               <div className="w-4 h-4 rounded-full bg-text absolute" />
 
@@ -228,29 +225,27 @@ const EventObj = ({ EventList, activeIndex, setEventIndex }) => {
 
 
             <div
-            className={`absolute left-1/2 -translate-x-1/2 text-xs text-text text-center w-32 group-hover:text-yellow/80 group-active:text-yellow
-                ${
-                    EventList.length <= 7
-                    ? (index % 2 !== 0
-                        ? (index % 4 === 1 ? "-top-16" : "-top-25")
-                        : (index % 4 === 2 ? "top-8" : "top-20")
-                    )
-                    :(index % 2 !== 0 ? (index === 1 ? "-top-12" // First odd (Index 1)
-                            : (index % 4 === 1 ? "-top-20"
-                                : index % 6 === 5) ? "-top-30" : "-top-18 text-text"
-                            )
-                    : (index===0 ? "top-10" // First Even (Index 0)
-                    :index % 4 === 0 ? "top-20"
-                    : (index % 6 === 2 ? "top-6" : "top-9"))
-                    )
-                    }
+              className={`absolute left-1/2 -translate-x-1/2 text-xs text-text text-center w-32 group-hover:text-yellow/80 group-active:text-yellow
+                ${EventList.length <= 7
+                  ? (index % 2 !== 0
+                    ? (index % 4 === 1 ? "-top-16" : "-top-25")
+                    : (index % 4 === 2 ? "top-8" : "top-20")
+                  )
+                  : (index % 2 !== 0 ? (index === 1 ? "-top-12" // First odd (Index 1)
+                    : (index % 4 === 1 ? "-top-20"
+                      : index % 6 === 5) ? "-top-30" : "-top-18 text-text"
+                  )
+                    : (index === 0 ? "top-10" // First Even (Index 0)
+                      : index % 4 === 0 ? "top-20"
+                        : (index % 6 === 2 ? "top-6" : "top-9"))
+                  )
+                }
                     
-                    ${
-                      index===activeIndex
-                      ?("text-yellow")
-                      :("text-text")
-                    }`}
-                    >
+                    ${index === activeIndex
+                  ? ("text-yellow")
+                  : ("text-text")
+                }`}
+            >
               {event.event}
               <br />
               <span className="opacity-70">{event.time}</span>
@@ -269,44 +264,42 @@ const EventObj = ({ EventList, activeIndex, setEventIndex }) => {
     DAY SELECTOR
 ====================== */
 const CurrDay = ({ activeDay, setActiveDay }) => {
-    return (
-        <div className="flex bg-text p-1 m-2 rounded-4xl gap-2 isolate">
-            <Button text="Day 1" day={1} activeDay={activeDay} setActiveDay={setActiveDay} />
-            <Button text="Day 2" day={2} activeDay={activeDay} setActiveDay={setActiveDay} />
-            <Button text="Day 3" day={3} activeDay={activeDay} setActiveDay={setActiveDay} />
-        </div>
-    );
+  return (
+    <div className="flex bg-text p-1 m-2 rounded-4xl gap-2 isolate">
+      <Button text="Day 1" day={1} activeDay={activeDay} setActiveDay={setActiveDay} />
+      <Button text="Day 2" day={2} activeDay={activeDay} setActiveDay={setActiveDay} />
+    </div>
+  );
 };
 
 /* ======================
     BUTTON
 ====================== */
 const Button = ({ text, day, activeDay, setActiveDay }) => {
-    return (
-        <button
-            onClick={() => setActiveDay(day)}
-            // 1. Added relative to contain the absolute background
-            // 2. Removed bg-colors from here (handled by the motion div now)
-            className={`relative text-lg rounded-4xl px-4 py-2 transition-colors duration-200 ${
-                activeDay === day ? "text-text" : "text-black hover:text-black/70"
-            }`}
-        >
-            {/* The Text (z-10 ensures it sits ON TOP of the sliding background) */}
-            <span className="relative z-10">{text}</span>
+  return (
+    <button
+      onClick={() => setActiveDay(day)}
+      // 1. Added relative to contain the absolute background
+      // 2. Removed bg-colors from here (handled by the motion div now)
+      className={`relative text-lg rounded-4xl px-4 py-2 transition-colors duration-200 ${activeDay === day ? "text-text" : "text-black hover:text-black/70"
+        }`}
+    >
+      {/* The Text (z-10 ensures it sits ON TOP of the sliding background) */}
+      <span className="relative z-10">{text}</span>
 
-            {activeDay === day && (
-                <motion.div
-                    // Framer detects this ID moving 
-                    // from one component to another and animates the position/width.
-                    layoutId="activePill"
-                    
-                    // Style matches your original active state
-                    className="absolute inset-0 bg-background rounded-4xl"
-                    
-                    // "spring" gives it that liquid/bouncy physics feel
-                    transition={{ type: "spring", stiffness: 300, damping: 10 }}
-                />
-            )}
-        </button>
-    );
+      {activeDay === day && (
+        <motion.div
+          // Framer detects this ID moving 
+          // from one component to another and animates the position/width.
+          layoutId="activePill"
+
+          // Style matches your original active state
+          className="absolute inset-0 bg-background rounded-4xl"
+
+          // "spring" gives it that liquid/bouncy physics feel
+          transition={{ type: "spring", stiffness: 300, damping: 10 }}
+        />
+      )}
+    </button>
+  );
 };
