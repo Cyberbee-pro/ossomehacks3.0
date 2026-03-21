@@ -17,7 +17,7 @@ const MapBox = () => {
               WHEN
             </h3>
             <p className="text-yellow pt-2 text-[22px] font-semibold leading-[100%] tracking-normal">
-              February 6-8, 2026
+              April 3-4, 2026
             </p>
           </div>
           
