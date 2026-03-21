@@ -16,12 +16,31 @@ export default function HeroButtons() {
   return (
     <div className="mt-4 mb-8 flex flex-wrap items-center justify-center gap-4 font-poppins">
 
-      {/* Devfolio Button */}
+      {/* Devfolio Button
       <div 
         className="apply-button" 
         data-hackathon-slug="ossome-hacks" 
         data-button-theme="dark"
-      ></div>
+      ></div> */}
+      {/* Discord Button */}
+      <button
+        onClick={() =>
+          window.open("https://www.githubsrmist.in/", "_blank")
+        }
+        className="
+          group flex items-center gap-3
+          min-h-[48px]
+          px-6
+          rounded-lg
+          border-4 border-black-custom
+          bg-black text-text font-semibold
+          text-sm sm:text-base
+          transition-all duration-200
+          hover:scale-105
+        "
+      >
+        Register Now
+      </button>
 
       {/* Discord Button */}
       <button
