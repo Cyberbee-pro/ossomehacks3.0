@@ -12,7 +12,7 @@ export const faq_data = [
     {
         category: "General",
         question: "Is there a registration fee?",
-        answer: "Zero. Registration, food, and swag are completely on us. You just need to bring your laptop and your best ideas."
+        answer: "Zero. Yor registration is completely on us. You just need to bring your laptop and your best ideas."
     },
     {
         category: "General",
