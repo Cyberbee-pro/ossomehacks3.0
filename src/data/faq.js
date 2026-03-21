@@ -2,12 +2,12 @@ export const faq_data = [
     {
         category: "General",
         question: "What exactly is OSSome Hacks 3.0?",
-        answer: "It’s our flagship 48-hour national-level physical hackathon. Think of it as a weekend where you build projects from scratch, learn from industry experts, and hang out with the best student developers in the country."
+        answer: "It’s our flagship 36-hour national-level physical hackathon. Think of it as a weekend where you build projects from scratch, learn from industry experts, and hang out with the best student developers in the country."
     },
     {
         "category": "General",
         "question": "When and where is it happening?",
-        "answer": "Mark your calendars for 6\u1d57\u02b0 February 2026! We’ll be hacking in person at SRMIST, Kattankulathur, Chennai (Mini Hall 1 & 2)."
+        "answer": "Mark your calendars for 3\u1d57\u02b0 April 2026! We’ll be hacking in person at SRMIST, Kattankulathur, Chennai (Mini Hall 1 & 2)."
     },
     {
         category: "General",
@@ -67,7 +67,7 @@ export const faq_data = [
     {
         category: "Judging & Prizes",
         question: "What are the prizes for winning?",
-        answer: "We have a massive prize pool including cash awards, premium tech gadgets, and a bunch of swag!"
+        answer: "We have a massive prize pool including cash awards, premium tech gadgets, and a bunch of swags!"
     },
     {
         category: "Judging & Prizes",
@@ -76,13 +76,8 @@ export const faq_data = [
     },
     {
         category: "Logistics",
-        question: "What about food arrangements?",
-        answer: "We provide all meals, snacks, and coffee!"
-    },
-    {
-        category: "Logistics",
         question: "Will I get an On-Duty (OD) certificate?",
-        answer: "Yes! We provide official OD support for all participants and organizers."
+        answer: "Since the event is being conducted on holidays, you won't need them!"
     },
     {
         category: "Logistics",
