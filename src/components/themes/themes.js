@@ -67,6 +67,7 @@ const ThemeCard = ({ theme }) => {
             src="/tracks/Stamp frame - Yellow.svg"
             alt="Stamp Frame"
             fill
+            sizes="(max-width: 768px) 100vw, 309px"
             className="object-fill"
             priority
           />
@@ -86,6 +87,7 @@ const ThemeCard = ({ theme }) => {
                 src="/tracks/Rectangle 39469.svg"
                 alt="Inner background"
                 fill
+                sizes="(max-width: 768px) 100vw, 260px"
                 className="object-cover"
               />
             </motion.div>
@@ -129,6 +131,7 @@ const ThemeCard = ({ theme }) => {
                 src={theme.image}
                 alt={theme.title}
                 fill
+                sizes="(max-width: 768px) 100vw, 214px"
                 className={`object-contain ${theme.imagePosition ?? 'object-bottom'}`}
               />
             </motion.div>

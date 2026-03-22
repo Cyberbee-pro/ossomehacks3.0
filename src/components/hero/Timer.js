@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { apiLinks } from '../../data/apiLinks';
 
 export default function Timer() {
   const [timeLeft, setTimeLeft] = useState({
@@ -18,7 +19,7 @@ export default function Timer() {
       try {
         setLoading(true);
         setError(null);
-        const res = await fetch('https://octacore.githubsrmist.in/api/events');
+        const res = await fetch(apiLinks.getEvents);
         if (!res.ok) throw new Error('Failed to fetch event data');
         const apiResponse = await res.json();
         const events = Array.isArray(apiResponse.data) ? apiResponse.data : [];

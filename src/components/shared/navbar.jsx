@@ -80,7 +80,7 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="absolute top-full left-0 right-0 bg-[#1a6953] border-t border-[#e6dfc1]/20 p-6 md:hidden shadow-xl backdrop-blur-md bg-[#1a6953]/90 rounded-2xl"
+            className="absolute top-[calc(100%+12px)] left-0 right-0 border border-[#e6dfc1]/20 p-6 md:hidden shadow-xl backdrop-blur-md bg-[#1a6953]/95 rounded-2xl"
           >
             <ul className="flex flex-col items-center gap-6">
               {navLinks.map((nav, index) => (

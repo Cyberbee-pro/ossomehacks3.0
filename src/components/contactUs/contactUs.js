@@ -119,10 +119,10 @@ export default function ContactSection() {
   return (
     <section className="bg-greenDark px-4 sm:px-6 md:px-10 py-16 sm:py-20 font-poppins flex justify-center">
       <form onSubmit={handleSubmit} className="w-full">
-        <div className="w-full max-w-6xl text-[#E6DFC1] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10 mb-12">
+        <div className="w-full max-w-6xl text-text mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10 mb-12 font-poppins">
             <div>
-              <label className="text-black text-sm mb-2 block font-medium">
+              <label className="text-text text-sm mb-2 block font-medium">
                 Your Name
               </label>
               <input
@@ -136,7 +136,7 @@ export default function ContactSection() {
             </div>
 
             <div>
-              <label className="text-black text-sm mb-2 block font-medium">
+              <label className="text-text text-sm mb-2 block font-medium">
                 Email Address
               </label>
               <input
@@ -150,7 +150,7 @@ export default function ContactSection() {
             </div>
 
             <div>
-              <label className="text-black text-sm mb-2 block font-medium">
+              <label className="text-text text-sm mb-2 block font-medium">
                 Phone Number (optional)
               </label>
               <input
@@ -164,7 +164,7 @@ export default function ContactSection() {
           </div>
 
           <div className="mb-12">
-            <label className="text-black text-sm mb-2 block font-medium">
+            <label className="text-text text-sm mb-2 block font-medium">
               Message
             </label>
             <textarea
