@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto">
 
         
-        <div className="flex justify-end gap-8 text-2xl mt-[-6rem] mb-5">
+        <div className="flex justify-end gap-8 text-2xl mt-[-6rem] mb-5 pr-10">
           <a
             href="https://twitter.com/GithubSrm"
             aria-label="Twitter"

@@ -19,6 +19,7 @@ export default function About() {
                 src="/about/unfolding-experience.jpg"
                 alt="Unfolding the Experience"
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover scale-[1.02]"
                 priority
               />
