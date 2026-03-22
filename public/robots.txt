@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://ossomehacks.githubsrmist.in
+
+# Sitemaps
+Sitemap: https://ossomehacks.githubsrmist.in/sitemap.xml
