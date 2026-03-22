@@ -141,8 +141,10 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { apiLinks } from "../../data/apiLinks";
+import { useWebHaptics } from "web-haptics/react";
 
 export default function Sponsors() {
+  const { trigger } = useWebHaptics();
   const [sponsorsData, setSponsorsData] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -242,6 +244,7 @@ export default function Sponsors() {
                       href={sponsor.link || "#"}
                       target="_blank"
                       rel="noreferrer"
+                      onClick={() => trigger("selection")}
                       className="group relative flex h-[200px] w-full items-center justify-center overflow-hidden border-2 border-text bg-background p-4 transition-all duration-300 -ml-[2px] -mt-[2px] hover:z-10 hover:border-yellow"
                     >
                       <div className="relative h-[60%] w-[80%] transition-transform duration-300 group-hover:scale-110">

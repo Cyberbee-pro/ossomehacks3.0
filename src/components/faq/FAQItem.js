@@ -3,14 +3,19 @@
 import { useState } from 'react'
 import { FiChevronDown } from 'react-icons/fi'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useWebHaptics } from "web-haptics/react"
 
 export default function FAQItem({ question, answer }) {
+  const { trigger } = useWebHaptics()
   const [open, setOpen] = useState(false)
 
   return (
     <div className="rounded-lg overflow-hidden">
       <button
-        onClick={() => setOpen(v => !v)}
+        onClick={() => {
+          trigger("soft");
+          setOpen(v => !v);
+        }}
         className="w-full text-left px-4 py-3 bg-yellow text-black-custom font-semibold flex justify-between items-center"
         aria-expanded={open}
       >

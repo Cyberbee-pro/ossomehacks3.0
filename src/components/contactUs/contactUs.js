@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { apiLinks } from "../../data/apiLinks";
+import { useWebHaptics } from "web-haptics/react";
 
 export default function ContactSection() {
+  const { trigger } = useWebHaptics();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -33,6 +35,7 @@ export default function ContactSection() {
           success: false,
           message: "Please enter your name.",
         });
+        trigger("error");
         return false;
       }
 
@@ -44,6 +47,7 @@ export default function ContactSection() {
           success: false,
           message: "Please enter a valid email address.",
         });
+        trigger("error");
         return false;
       }
 
@@ -54,6 +58,7 @@ export default function ContactSection() {
           success: false,
           message: "Please enter a message.",
         });
+        trigger("error");
         return false;
       }
 
@@ -94,18 +99,21 @@ export default function ContactSection() {
             "Thank you! Your message has been sent successfully.",
         });
         setFormData({ name: "", email: "", phone: "", message: "" });
+        trigger("success");
       } else if (response.status === 400) {
         setStatus({
           loading: false,
           success: false,
           message: "Validation failed. Please check your input.",
         });
+        trigger("error");
       } else {
         setStatus({
           loading: false,
           success: false,
           message: data.message || "Something went wrong. Please try again.",
         });
+        trigger("error");
       }
     } catch (error) {
       setStatus({
@@ -113,6 +121,7 @@ export default function ContactSection() {
         success: false,
         message: "Network error. Please try again later.",
       });
+      trigger("error");
     }
   };
 
@@ -202,6 +211,7 @@ export default function ContactSection() {
               target="_blank"
               rel="noopener noreferrer"
               className="underline tracking-wide text-[#E6DFC1]"
+              onClick={() => trigger("selection")}
             >
               CODE OF CONDUCT
             </a>

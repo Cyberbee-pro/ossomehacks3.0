@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import Image from "next/image";
+import { useWebHaptics } from "web-haptics/react";
 
 // Gallery image paths
 const images = [
@@ -15,6 +16,7 @@ const images = [
 ];
 
 export default function GalleryHero() {
+  const { trigger } = useWebHaptics();
   const videoRef = useRef(null);
   const videoContainerRef = useRef(null);
 
@@ -45,6 +47,7 @@ export default function GalleryHero() {
   }, [isInView]);
 
   const toggleMute = () => {
+    trigger("soft");
     const video = videoRef.current;
     if (!video) return;
 
@@ -133,6 +136,7 @@ export default function GalleryHero() {
 
 // ... Carousel component remains unchanged ...
 function Carousel({ images, direction = "left", offset = 0 }) {
+  const { trigger } = useWebHaptics();
   const loopImages = [...images, ...images];
 
   // Measure one card width
@@ -203,6 +207,7 @@ function Carousel({ images, direction = "left", offset = 0 }) {
             <div
               key={`${direction}-${i}`}
               ref={i === 0 ? firstCardRef : null} // Measure first card only
+              onClick={() => trigger("soft")}
               className="relative flex-shrink-0 w-[260px] sm:w-[300px] md:w-[435px] aspect-video overflow-hidden rounded-2xl shadow-lg group cursor-pointer"
             >
               <Image

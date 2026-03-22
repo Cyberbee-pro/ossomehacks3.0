@@ -1,6 +1,7 @@
 import { timeLine } from "@/data/timeLine";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useWebHaptics } from "web-haptics/react";
 
 export default function TimeLine() {
   return (
@@ -22,6 +23,7 @@ const Content = () => {
   const publicEvents = dayData.events.filter((e) => e.type === "Public");
 
   useEffect(() => {
+    // eslint-disable-next-line
     setEventIndex(0);
   }, [activeDay]);
 
@@ -67,6 +69,7 @@ const Content = () => {
     FEED 
 ====================== */
 const Feed = ({ events, eventIndex, setEventIndex }) => {
+  const { trigger } = useWebHaptics();
   const event = events[eventIndex];
 
   if (!event) {
@@ -76,7 +79,10 @@ const Feed = ({ events, eventIndex, setEventIndex }) => {
   return (
     <div className="flex gap-4 items-center">
       <button
-        onClick={() => setEventIndex(i => Math.max(i - 1, 0))}
+        onClick={() => {
+          trigger("soft");
+          setEventIndex(i => Math.max(i - 1, 0));
+        }}
         disabled={eventIndex === 0}
         className={`p-4 py-2 rounded-full text-black
             ${eventIndex === 0 ? "bg-text/30" : "bg-text"}`}
@@ -94,9 +100,10 @@ const Feed = ({ events, eventIndex, setEventIndex }) => {
       </div>
 
       <button
-        onClick={() =>
-          setEventIndex(i => Math.min(i + 1, events.length - 1))
-        }
+        onClick={() => {
+          trigger("soft");
+          setEventIndex(i => Math.min(i + 1, events.length - 1));
+        }}
         disabled={eventIndex === events.length - 1}
         className={`p-4 py-2 rounded-full text-black
             ${eventIndex === events.length - 1 ? "bg-text/30" : "bg-text"}`}
@@ -136,6 +143,7 @@ const getHourFromTime = (timeStr) => {
 };
 
 const EventObj = ({ EventList, activeIndex, setEventIndex }) => {
+  const { trigger } = useWebHaptics();
   return (
     <div className="relative w-[79vw] h-2 bg-text md:w-[90vw]">
       {EventList.map((event, index) => {
@@ -163,7 +171,10 @@ const EventObj = ({ EventList, activeIndex, setEventIndex }) => {
         return (
           <button
             key={index}
-            onClick={() => setEventIndex(index)}
+            onClick={() => {
+              trigger("soft");
+              setEventIndex(index);
+            }}
             className="absolute top-1/2 -translate-y-1/2 group" // Added 'group' for hover effects if needed
             style={{ left: `${positionLeft}%` }}
           >
@@ -276,9 +287,13 @@ const CurrDay = ({ activeDay, setActiveDay }) => {
     BUTTON
 ====================== */
 const Button = ({ text, day, activeDay, setActiveDay }) => {
+  const { trigger } = useWebHaptics();
   return (
     <button
-      onClick={() => setActiveDay(day)}
+      onClick={() => {
+        trigger("soft");
+        setActiveDay(day);
+      }}
       // 1. Added relative to contain the absolute background
       // 2. Removed bg-colors from here (handled by the motion div now)
       className={`relative text-lg rounded-4xl px-4 py-2 transition-colors duration-200 ${activeDay === day ? "text-text" : "text-black hover:text-black/70"
