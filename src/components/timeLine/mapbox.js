@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
+import { useWebHaptics } from 'web-haptics/react';
 
 const MapBox = () => {
+  const { trigger } = useWebHaptics();
   const iframeRef = useRef(null);
   const mapEmbedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d916.3119266830236!2d80.04393840672755!3d12.8231960330648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52f712b82a78d9%3A0xfdb944a3aee53831!2sSRM%20Institute%20of%20Science%20and%20Technology!5e0!3m2!1sen!2sin!4v1766166741420!5m2!1sen!2sin";
   const googleMapsUrl = "https://www.google.com/maps/place/SRM+Institute+of+Science+and+Technology/@12.8230382,80.0418411,17z/data=!3m1!4b1!4m6!3m5!1s0x3a52f712b82a78d9:0xfdb944a3aee53831!8m2!3d12.823033!4d80.044416!16zL20vMGJwNzl6?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA3MUgBUAM%3D+Nadu";
@@ -51,6 +53,7 @@ const MapBox = () => {
               href={googleMapsUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trigger("selection")}
               className="inline-flex items-center gap-2 bg-[#e6dfc1] text-black-custom px-5 py-2.5 rounded-full font-semibold text-sm hover:bg-yellow transition-all duration-300 hover:scale-105 shadow-lg mt-12"
             >
               <span>➤</span>
@@ -74,7 +77,10 @@ const MapBox = () => {
                 <button
                   type="button"
                   aria-label="Open in Google Maps" 
-                  onClick={() => window.open(googleMapsUrl, '_blank')}
+                  onClick={() => {
+                    trigger("selection");
+                    window.open(googleMapsUrl, '_blank');
+                  }}
                   className="text-white hover:text-yellow transition-colors"
                 >
                   <svg 
@@ -96,6 +102,7 @@ const MapBox = () => {
                   type="button"
                   aria-label="View map in fullscreen"
                   onClick={() => {
+                    trigger("selection");
                     try {
                       const iframe = iframeRef.current;
                       if (iframe) {

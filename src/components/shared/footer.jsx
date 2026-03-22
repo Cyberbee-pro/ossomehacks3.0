@@ -1,7 +1,9 @@
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { useWebHaptics } from "web-haptics/react";
 
 const Footer = () => {
+  const { trigger } = useWebHaptics();
   return (
     <footer className="bg-greenDark text-[#E6DFC1] font-poppins px-0 sm:px-0">
       <div className="max-w-6xl mx-auto">
@@ -14,6 +16,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="hover:opacity-80 transition"
+            onClick={() => trigger("selection")}
           >
             <FaXTwitter />
           </a>
@@ -24,6 +27,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="hover:opacity-80 transition"
+            onClick={() => trigger("selection")}
           >
             <FaLinkedin />
           </a>
@@ -34,6 +38,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="hover:opacity-80 transition"
+            onClick={() => trigger("selection")}
           >
             <FaInstagram />
           </a>
@@ -44,6 +49,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="hover:opacity-80 transition"
+            onClick={() => trigger("selection")}
           >
             <FaGithub />
           </a>
@@ -71,6 +77,7 @@ const Footer = () => {
               className="hover:underline"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trigger("nudge")}
             >
               Privacy Policy
             </a>
@@ -80,6 +87,7 @@ const Footer = () => {
               className="hover:underline"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trigger("nudge")}
             >
               Terms & Conditions
             </a>

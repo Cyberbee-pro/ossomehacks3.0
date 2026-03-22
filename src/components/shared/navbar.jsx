@@ -6,9 +6,11 @@ import Link from "next/link";
 import { navLinks } from "@/data/navLinks";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoMenu, IoClose } from "react-icons/io5";
+import { useWebHaptics } from "web-haptics/react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { trigger } = useWebHaptics();
 
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
@@ -18,6 +20,7 @@ const Navbar = () => {
   };
 
   const handleNavClick = (e, link) => {
+    trigger("selection");
     setIsOpen(false);
     if (link.startsWith("#")) {
       e.preventDefault();
@@ -26,6 +29,7 @@ const Navbar = () => {
   };
 
   const toggleMenu = () => {
+    trigger("selection");
     setIsOpen(!isOpen);
   };
 
@@ -33,7 +37,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 backdrop-blur-md bg-[#1a6953]/30 border-b border-[#e6dfc1]/10 mt-2 lg:mx-26 mx-6 rounded-full">
       {/* Logo */}
       <div className="flex items-center">
-        <Link href="/" className="relative h-12 w-40">
+        <Link href="/" className="relative h-12 w-40" onClick={() => trigger("light")}>
           <Image
             src="/logos/final-logo.svg"
             alt="OSSOME hacks"
