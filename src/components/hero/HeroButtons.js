@@ -1,7 +1,10 @@
 import Image from "next/image";
 import React from "react";
+import { useWebHaptics } from "web-haptics/react";
 
 export default function HeroButtons() {
+  const { trigger } = useWebHaptics();
+
   React.useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://apply.devfolio.co/v2/sdk.js';
@@ -24,9 +27,10 @@ export default function HeroButtons() {
       ></div> */}
       {/* Register Button */}
       <button
-        onClick={() =>
-          window.open("https://www.githubsrmist.in/", "_blank")
-        }
+        onClick={() => {
+          trigger("heavy");
+          window.open("https://www.githubsrmist.in/", "_blank");
+        }}
         className="group flex items-center justify-center gap-3 min-h-[48px] w-full sm:w-[220px] px-6 rounded-lg border-4 border-black-custom bg-black text-text font-semibold text-sm sm:text-base transition-all duration-200 hover:scale-105"
       >
         Register Now
@@ -34,9 +38,10 @@ export default function HeroButtons() {
 
       {/* Discord Button */}
       <button
-        onClick={() =>
-          window.open("https://discord.gg/xxJ5z4bj9g", "_blank")
-        }
+        onClick={() => {
+          trigger("heavy");
+          window.open("https://discord.gg/xxJ5z4bj9g", "_blank");
+        }}
         className="group flex items-center justify-center gap-3 min-h-[48px] w-full sm:w-[220px] px-6 rounded-lg border-4 border-black-custom bg-transparent text-black-custom font-semibold text-sm sm:text-base transition-all duration-200 hover:scale-105 hover:bg-black-custom hover:text-text"
       >
         <span className="relative h-5 w-5 transition-all duration-200 group-hover:invert">
