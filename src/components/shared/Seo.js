@@ -91,7 +91,7 @@ export default function Seo({
                         "organizer": {
                             "@type": "Organization",
                             "name": "GitHub Community SRM",
-                            "url": "https://community.githubsrmist.in/"
+                            "url": "https://www.githubsrmist.in/"
                         }
                     })
                 }}
