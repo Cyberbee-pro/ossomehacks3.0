@@ -153,12 +153,12 @@ export default function Sponsors() {
     const fetchSponsors = async () => {
       try {
         setLoading(true);
-        const res = await fetch(apiLinks.getEvents);
+        const res = await fetch(apiLinks.getEventBySlug("ossomehacks3"));
         if (!res.ok) throw new Error("Failed to fetch events");
         const json = await res.json();
-
-        const events = Array.isArray(json?.data) ? json.data : [];
-        const oh3Event = events.find(e => e.slug === "ossomehacks3") || events[0];
+        const oh3Event = Array.isArray(json?.data)
+          ? (json.data.find(e => e.slug === "ossomehacks3") || json.data[0])
+          : json?.data;
         const data = oh3Event?.sponsors_details || [];
 
         // Group by tier
