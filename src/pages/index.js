@@ -1,5 +1,4 @@
 import Themes from "@/components/themes/themes";
-import Image from "next/image";
 import Hero from "@/components/hero/Hero";
 import TimeLine from "@/components/timeLine/timeLine";
 import About from "@/components/about/about";
@@ -9,6 +8,8 @@ import MapBox from "@/components/timeLine/mapbox";
 import FAQSection from "@/components/faq/FAQSection";
 import Gallery from "@/components/gallery/gallery";
 import Seo from "@/components/shared/Seo";
+import Prizes from "@/components/prizes/prizes";
+// import PrizesClassic from "@/components/prizes/prizesClassic";
 
 export default function HomePage() {
   return (
@@ -29,6 +30,11 @@ export default function HomePage() {
       <section id="timeline" className="pt-20">
         <TimeLine />
         <MapBox />
+      </section>
+
+      <section id="prizes" className="pt-20">
+        <Prizes />
+        {/* <PrizesClassic /> */}
       </section>
 
       <section id="gallery" className="pt-20">

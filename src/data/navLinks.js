@@ -12,6 +12,10 @@ export const navLinks = [
         link: "#timeline"
     },
     {
+        name: "Prizes",
+        link: "#prizes"
+    },
+    {
         name: "Gallery",
         link: "#gallery"
     },

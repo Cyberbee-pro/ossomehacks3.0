@@ -222,7 +222,7 @@ export default function Sponsors() {
   return (
     <section className="relative w-full overflow-hidden bg-background px-4 py-16 md:py-24">
       <div className="mx-auto flex max-w-[1440px] flex-col items-center">
-        <h2 className="mb-16 text-center font-poppins text-[48px] font-bold leading-none text-yellow md:text-[96px]">
+        <h2 className="text-center font-poppins font-bold text-yellow text-5xl sm:text-7xl xl:text-8xl mb-12">
           Sponsors
         </h2>
 
