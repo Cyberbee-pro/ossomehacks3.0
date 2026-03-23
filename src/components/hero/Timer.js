@@ -19,11 +19,12 @@ export default function Timer() {
       try {
         setLoading(true);
         setError(null);
-        const res = await fetch(apiLinks.getEvents);
+        const res = await fetch(apiLinks.getEventBySlug('ossomehacks3'));
         if (!res.ok) throw new Error('Failed to fetch event data');
         const apiResponse = await res.json();
-        const events = Array.isArray(apiResponse.data) ? apiResponse.data : [];
-        const event = events.find(e => e.slug === 'ossomehacks3');
+        const event = Array.isArray(apiResponse?.data)
+          ? apiResponse.data.find(e => e.slug === 'ossomehacks3')
+          : apiResponse?.data;
         if (event && event.event_date) {
           setTargetDate(new Date(event.event_date).getTime());
         } else {

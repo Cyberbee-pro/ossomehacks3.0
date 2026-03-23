@@ -19,17 +19,11 @@ export default function HeroButtons() {
   return (
     <div className="mt-4 mb-8 flex flex-wrap items-center justify-center gap-4 font-poppins">
 
-      {/* Devfolio Button
-      <div 
-        className="apply-button" 
-        data-hackathon-slug="ossome-hacks" 
-        data-button-theme="dark"
-      ></div> */}
       {/* Register Button */}
       <button
         onClick={() => {
           trigger("heavy");
-          window.open("https://www.githubsrmist.in/", "_blank");
+          window.open("https://unstop.com/hackathons/ossome-hacks-30-srm-institute-of-science-and-technology-kattankulathur-chennai-1663473", "_blank");
         }}
         className="group flex items-center justify-center gap-3 min-h-[48px] w-full sm:w-[220px] px-6 rounded-lg border-4 border-black-custom bg-black text-text font-semibold text-sm sm:text-base transition-all duration-200 hover:scale-105"
       >
@@ -40,7 +34,7 @@ export default function HeroButtons() {
       <button
         onClick={() => {
           trigger("heavy");
-          window.open("https://discord.gg/xxJ5z4bj9g", "_blank");
+          window.open("https://discord.gg/VBkKwAGKUU", "_blank");
         }}
         className="group flex items-center justify-center gap-3 min-h-[48px] w-full sm:w-[220px] px-6 rounded-lg border-4 border-black-custom bg-transparent text-black-custom font-semibold text-sm sm:text-base transition-all duration-200 hover:scale-105 hover:bg-black-custom hover:text-text"
       >
