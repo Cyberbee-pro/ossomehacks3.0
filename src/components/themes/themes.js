@@ -7,12 +7,13 @@ const THEMES = [
   {
     id: 1,
     title: 'Claw & Shield',
-    image: '/tracks/edtech.png',
+    image: '/tracks/fintech.png',
   },
   {
     id: 2,
-    title: 'Open Innovation using AI/ML',
-    image: '/tracks/Agritech.png',
+    title: 'Open Innovation (AI/ML)',
+    image: '/tracks/openinovation.png',
+    imageScale: 1.2,
   }
 ];
 
@@ -64,7 +65,7 @@ const ThemeCard = ({ theme }) => {
             </motion.div>
 
             <motion.div
-              className="pointer-events-none absolute inset-4 z-30 border-[3px] border-dotted border-[#ffb900]"
+              className="pointer-events-none absolute inset-4 z-10 border-[3px] border-dotted border-[#ffb900]"
               variants={{
                 rest: { opacity: 0.8, scale: 1 },
                 hover: { opacity: 1, scale: 0.98 }
@@ -73,7 +74,7 @@ const ThemeCard = ({ theme }) => {
             />
 
             <motion.div
-              className="relative z-20 mt-6 text-center text-[39px] font-semibold leading-[0.98] text-white drop-shadow-md px-2"
+              className="relative z-30 mt-6 text-center text-[39px] font-semibold leading-[0.98] text-white drop-shadow-md px-2"
               variants={{
                 rest: { y: 0 },
                 hover: { y: -5 }
@@ -91,7 +92,7 @@ const ThemeCard = ({ theme }) => {
             </motion.div>
 
             <motion.div
-              className={`relative z-20 ${theme.containerClass ?? 'mt-auto mb-3'} h-[260px] w-[214px]`}
+              className={`relative z-30 ${theme.containerClass ?? 'mt-auto mb-3'} h-[260px] w-[214px]`}
               variants={{
                 rest: { y: 0, scale: theme.imageScale ?? 1 },
                 hover: { y: -15, scale: (theme.imageScale ?? 1) * 1.1 }
@@ -102,7 +103,7 @@ const ThemeCard = ({ theme }) => {
                 src={theme.image}
                 alt={theme.title}
                 fill
-                sizes="(max-width: 768px) 100vw, 214px"
+                // sizes=" 100vw, 214px"
                 className={`object-contain ${theme.imagePosition ?? 'object-bottom'}`}
               />
             </motion.div>

@@ -77,7 +77,7 @@ export default function GalleryHero() {
 
         {/* Title */}
         <div className="relative z-10 pt-20 pb-12 px-2 text-center">
-          <h2 className="text-5xl md:text-8xl font-bold font-poppins text-yellow">
+          <h2 className="text-center font-poppins font-bold text-yellow text-5xl sm:text-7xl xl:text-8xl mb-12">
             Our Journey So Far
           </h2>
         </div>
