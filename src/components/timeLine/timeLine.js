@@ -29,7 +29,7 @@ const Content = () => {
 
   return (
     <div className="flex flex-col w-full items-center justify-center gap-6">
-      <div className="text-yellow font-bold text-6xl md:text-7xl">Timeline</div>
+      <h2 className="text-center font-poppins font-bold text-yellow text-5xl sm:text-7xl xl:text-8xl mb-12">Timeline</h2>
 
       {/* --- ANIMATED DATE CONTAINER --- */}
       <div className="relative h-12 md:h-14 w-full overflow-hidden">

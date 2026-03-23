@@ -15,7 +15,7 @@ export default function FAQSection() {
   return (
     <section className="w-full px-4 py-8 flex justify-center">
       <div className="w-full max-w-3xl rounded-xl p-6">
-        <h2 className="text-center text-yellow text-5xl md:text-8xl font-bold pb-10">
+        <h2 className="text-center font-poppins font-bold text-yellow text-5xl sm:text-7xl xl:text-8xl mb-12">
           FAQs
         </h2>
 

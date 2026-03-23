@@ -7,7 +7,7 @@ export default function About() {
       <div className="flex flex-col lg:flex-row items-start justify-between mb-16 gap-8">
 
         <div className="z-10 lg:w-5/12 relative">
-          <h2 className="text-yellow text-5xl md:text-8xl font-bold leading-tight">
+          <h2 className="font-poppins font-bold text-yellow text-5xl sm:text-7xl xl:text-8xl mb-12">
             Unfolding the <br /> Experience
           </h2>
         </div>
