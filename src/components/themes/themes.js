@@ -6,43 +6,14 @@ import { motion } from "framer-motion";
 const THEMES = [
   {
     id: 1,
-    title: 'EdTech',
+    title: 'Claw & Shield',
     image: '/tracks/edtech.png',
   },
   {
     id: 2,
-    title: 'AgriTech',
+    title: 'Open Innovation using AI/ML',
     image: '/tracks/Agritech.png',
-  },
-  {
-    id: 3,
-    title: 'FinTech',
-    image: '/tracks/fintech.png',
-  },
-  {
-    id: 4,
-    title: 'HealthTech',
-    image: '/tracks/healthtech.png',
-    imageScale: 1.2,
-    imagePosition: 'object-center',
-    containerClass: 'mt-auto -mb-4',
-  },
-  {
-    id: 5,
-    title: 'Web3 & Crypto',
-    image: '/tracks/web3.png',
-    imageScale: 1.1,
-    imagePosition: 'object-center',
-    containerClass: 'mt-auto -mb-4 ml-16',
-  },
-  {
-    id: 6,
-    title: 'Open Innovation',
-    image: '/tracks/openinovation.png',
-    imageScale: 1.2,
-    imagePosition: 'object-center',
-    containerClass: 'mt-auto mb-5',
-  },
+  }
 ];
 
 const ThemeCard = ({ theme }) => {
@@ -145,8 +116,8 @@ const ThemeCard = ({ theme }) => {
 export default function Themes() {
   return (
     <div className="flex flex-col items-center w-full py-10">
-      <h2 className='text-center font-poppins font-bold text-yellow text-5xl sm:text-7xl xl:text-8xl mb-12'>Theme</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 gap-y-16 justify-items-center">
+      <h2 className='text-center font-poppins font-bold text-yellow text-5xl sm:text-7xl xl:text-8xl mb-12'>Themes</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12 gap-y-16 justify-items-center">
         {THEMES.map((theme) => (
           <ThemeCard key={theme.id} theme={theme} />
         ))}
