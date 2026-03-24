@@ -9,6 +9,10 @@ export default function Seo({
 }) {
     const siteTitle = title;
     const themeColor = "#1a6953";
+    const normalizedUrl = url.endsWith("/") ? url.slice(0, -1) : url;
+    const absoluteImageUrl = image.startsWith("http")
+        ? image
+        : `${normalizedUrl}${image.startsWith("/") ? image : `/${image}`}`;
 
     return (
         <Head>
@@ -37,18 +41,24 @@ export default function Seo({
             <meta property="og:url" content={url} />
             <meta property="og:title" content={siteTitle} />
             <meta property="og:description" content={description} />
-            <meta property="og:image" content={image} />
+            <meta property="og:image" content={absoluteImageUrl} />
+            <meta property="og:image:url" content={absoluteImageUrl} />
+            <meta property="og:image:secure_url" content={absoluteImageUrl} />
+            <meta property="og:image:type" content="image/png" />
+            <meta property="og:image:width" content="1476" />
+            <meta property="og:image:height" content="768" />
             <meta property="og:image:alt" content="OSSome Hacks 3.0 Banner" />
             <meta property="og:locale" content="en_IN" />
 
             {/* Twitter */}
-            <meta property="twitter:card" content="summary_large_image" />
-            <meta property="twitter:creator" content="@githubsrm" />
-            <meta property="twitter:site" content="@githubsrm" />
-            <meta property="twitter:url" content={url} />
-            <meta property="twitter:title" content={siteTitle} />
-            <meta property="twitter:description" content={description} />
-            <meta property="twitter:image" content={image} />
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:creator" content="@githubsrm" />
+            <meta name="twitter:site" content="@githubsrm" />
+            <meta name="twitter:url" content={url} />
+            <meta name="twitter:title" content={siteTitle} />
+            <meta name="twitter:description" content={description} />
+            <meta name="twitter:image" content={absoluteImageUrl} />
+            <meta name="twitter:image:alt" content="OSSome Hacks 3.0 Banner" />
 
             <link rel="icon" href="/favicon.ico" />
 
@@ -60,8 +70,8 @@ export default function Seo({
                         "@context": "https://schema.org",
                         "@type": "Event",
                         "name": "OSSome Hacks 3.0",
-                        "startDate": "2026-04-10T09:00",
-                        "endDate": "2026-04-11T18:00",
+                        "startDate": "2026-04-03T08:00:00+05:30",
+                        "endDate": "2026-04-04T18:00:00+05:30",
                         "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
                         "eventStatus": "https://schema.org/EventScheduled",
                         "location": {
@@ -77,7 +87,7 @@ export default function Seo({
                             }
                         },
                         "image": [
-                            url + image
+                            absoluteImageUrl
                         ],
                         "description": description,
                         "offers": {
