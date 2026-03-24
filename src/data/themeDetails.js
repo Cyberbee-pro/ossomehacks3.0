@@ -9,67 +9,8 @@ export const THEME_DETAILS = [
       "Design autonomous OpenClaw agents that can take real actions on user systems while staying strictly aligned with user-defined intent boundaries.",
     sections: [
       {
-        title: "Context and Core Question",
-        items: [
-          "Autonomous agents can modify files and execute commands directly on local systems.",
-          "That power introduces the risk of irreversible or unintended actions.",
-          "Core challenge: preserve user control while enabling autonomy.",
-          "\"Autonomy must not mean loss of control.\"",
-        ],
-      },
-      {
-        title: "Your Challenge",
-        items: [
-          "Build an OpenClaw-based autonomous system with intent-aware execution.",
-          "Demonstrate meaningful multi-step reasoning and real action execution.",
-          "Enforce clear intent boundaries at runtime with deterministic constraints.",
-          "Show explicit blocking of unauthorized behavior and visible policy violations.",
-        ],
-      },
-      {
-        title: "Technical Requirements",
-        items: [
-          "An OpenClaw-based autonomous agent.",
-          "Real execution of actions in a system environment.",
-          "Intent validation layer before execution.",
-          "Policy-based runtime enforcement.",
-        ],
-      },
-      {
-        title: "Architectural Expectations",
-        items: [
-          "Clear separation between reasoning and execution.",
-          "A visible and explicit enforcement layer.",
-          "Traceability through logs or decision records.",
-          "At least one allowed action and one blocked action with clear rationale.",
-        ],
-      },
-      {
-        title: "Intent and Policy Design",
-        items: [
-          "Define a structured intent model.",
-          "Define an enforceable policy model (directory scopes, command restrictions, etc.).",
-          "Hardcoded if/else checks alone are not sufficient for policy logic.",
-        ],
-      },
-      {
-        title: "Judging Criteria",
-        items: [
-          "Enforcement strength and deterministic blocking of violations.",
-          "Architectural clarity of the enforcement mechanism.",
-          "Depth and correctness of OpenClaw integration.",
-          "Accurate delegation enforcement (if implemented).",
-          "Use-case realism and depth of scenario design.",
-        ],
-      },
-      {
-        title: "Submission Requirements",
-        items: [
-          "Source code repository.",
-          "Architecture diagram.",
-          "Short technical document describing models and mechanisms.",
-          "Three-minute demo video.",
-        ],
+        title: "Coming Soon",
+        items: ["Details for this track will be announced soon."],
       },
     ],
   },
