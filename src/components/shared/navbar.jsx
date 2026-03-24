@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { navLinks } from "@/data/navLinks";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoMenu, IoClose } from "react-icons/io5";
@@ -11,6 +12,7 @@ import { useWebHaptics } from "web-haptics/react";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { trigger } = useWebHaptics();
+  const router = useRouter();
 
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
@@ -24,7 +26,14 @@ const Navbar = () => {
     setIsOpen(false);
     if (link.startsWith("#")) {
       e.preventDefault();
-      scrollToSection(link.substring(1));
+      const sectionId = link.substring(1);
+
+      if (router.pathname === "/") {
+        scrollToSection(sectionId);
+        return;
+      }
+
+      router.push(`/${link}`);
     }
   };
 
