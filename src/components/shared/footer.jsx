@@ -1,5 +1,6 @@
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import Link from "next/link";
 import { useWebHaptics } from "web-haptics/react";
 
 const Footer = () => {
@@ -72,6 +73,14 @@ const Footer = () => {
 
           
           <div className="flex gap-6 text-xs sm:text-sm">
+            <Link
+              href="/resources"
+              className="hover:underline"
+              onClick={() => trigger("nudge")}
+            >
+              Resources
+            </Link>
+
             <a
               href="https://github.com/MLH/mlh-policies/blob/main/privacy-policy.md"
               className="hover:underline"
