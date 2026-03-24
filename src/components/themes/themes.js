@@ -1,27 +1,17 @@
 "use client";
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import Image from "next/image";
 import { motion } from "framer-motion";
+import ThemeModal from "./ThemeModal";
+import { THEME_DETAILS } from "@/data/themeDetails";
 
-const THEMES = [
-  {
-    id: 1,
-    title: 'Claw & Shield',
-    image: '/tracks/fintech.png',
-  },
-  {
-    id: 2,
-    title: 'Open Innovation (AI/ML)',
-    image: '/tracks/openinovation.png',
-    imageScale: 1.2,
-  }
-];
-
-const ThemeCard = ({ theme }) => {
+const ThemeCard = ({ theme, onClick }) => {
 
   return (
-    <motion.div
-      className={`relative isolate w-[309px] h-[413px] -font-poppins cursor-pointer group`}
+    <motion.button
+      type="button"
+      onClick={() => onClick(theme)}
+      className="group relative isolate h-[413px] w-[309px] text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow focus-visible:ring-offset-2 focus-visible:ring-offset-[#17353C]"
       initial="rest"
       whileHover="hover"
       animate="rest"
@@ -29,7 +19,7 @@ const ThemeCard = ({ theme }) => {
       <motion.div
         variants={{
           rest: { scale: 1, rotate: 0, filter: "drop-shadow(0px 4px 6px rgba(0,0,0,0.1))" },
-          hover: { scale: 1.05, rotate: 1.5, filter: "drop-shadow(0px 20px 30px rgba(0,0,0,0.2))" },
+          hover: { scale: 1.05, rotate: 0.5, filter: "drop-shadow(0px 20px 30px rgba(0,0,0,0.2))" },
         }}
         transition={{ type: "spring", stiffness: 300, damping: 15 }}
         className="relative w-full h-full"
@@ -103,26 +93,48 @@ const ThemeCard = ({ theme }) => {
                 src={theme.image}
                 alt={theme.title}
                 fill
-                // sizes=" 100vw, 214px"
+                sizes="(max-width: 768px) 100vw, 214px"
                 className={`object-contain ${theme.imagePosition ?? 'object-bottom'}`}
               />
             </motion.div>
+
+            {/* <motion.p
+              className="relative z-30 mb-4 text-[11px] font-semibold uppercase tracking-[0.16em] text-yellow/90"
+              variants={{
+                rest: { opacity: 0.75, y: 0 },
+                hover: { opacity: 1, y: -3 }
+              }}
+            >
+              Click to view details
+            </motion.p> */}
           </div>
         </div>
       </motion.div>
-    </motion.div>
+    </motion.button>
   );
 };
 
 export default function Themes() {
+  const [selectedTheme, setSelectedTheme] = useState(null);
+  const activeTheme = useMemo(
+    () => THEME_DETAILS.find((theme) => theme.id === selectedTheme) ?? null,
+    [selectedTheme]
+  );
+
   return (
     <div className="flex flex-col items-center w-full py-10">
       <h2 className='text-center font-poppins font-bold text-yellow text-5xl sm:text-7xl xl:text-8xl mb-12'>Themes</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12 gap-y-16 justify-items-center">
-        {THEMES.map((theme) => (
-          <ThemeCard key={theme.id} theme={theme} />
+        {THEME_DETAILS.map((theme) => (
+          <ThemeCard key={theme.id} theme={theme} onClick={(item) => setSelectedTheme(item.id)} />
         ))}
       </div>
+
+      <ThemeModal
+        theme={activeTheme}
+        open={Boolean(activeTheme)}
+        onClose={() => setSelectedTheme(null)}
+      />
     </div>
   );
 }

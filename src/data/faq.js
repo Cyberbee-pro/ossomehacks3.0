@@ -1,87 +1,103 @@
 export const faq_data = [
-    {
-        category: "General",
-        question: "What exactly is OSSome Hacks 3.0?",
-        answer: "It’s our flagship 36-hour national-level physical hackathon. Think of it as a weekend where you build projects from scratch, learn from industry experts, and hang out with the best student developers in the country."
-    },
-    {
-        "category": "General",
-        "question": "When and where is it happening?",
-        "answer": "Mark your calendars for 3\u1d57\u02b0 April 2026! We’ll be hacking in person at SRMIST, Kattankulathur, Chennai (Mini Hall 1 & 2)."
-    },
-    {
-        category: "General",
-        question: "Is there a registration fee?",
-        answer: "Zero. Your registration is completely on us. You just need to bring your laptop and your best ideas."
-    },
-    {
-        category: "General",
-        question: "Who is organizing this event?",
-        answer: "The event is organized by GitHub Community SRM, a student-led club at SRMIST dedicated to fostering a culture of open-source and technical innovation."
-    },
-    {
-        category: "General",
-        question: "Is there a Code of Conduct?",
-        answer: "Yes. We take the safety and comfort of our community very seriously. All participants must follow our Code of Conduct to ensure a harassment-free and professional experience for everyone."
-    },
-    {
-        category: "Participation",
-        question: "Who can join the hackathon?",
-        answer: "Any college student with a passion for tech! Whether you're a newbie just starting out or a seasoned pro, you're welcome to apply."
-    },
-    {
-        category: "Participation",
-        question: "What is the team size and can I participate alone?",
-        answer: "You can participate in teams of 2 to 4 people. We require a minimum of 2 per team to encourage collaboration. If you're a 'solo' hacker, you can find a team on Discord before the event!"
-    },
-    {
-        category: "Participation",
-        question: "Can I have teammates from different colleges?",
-        answer: "No, unfortunately we do not allow inter-college teams due to administrative reasons."
-    },
-    {
-        category: "Participation",
-        question: "Do I need to be a 'pro' coder to join?",
-        answer: "Not at all! Hackathons are for learning. We encourage beginners to join, attend workshops, and build their first real-world project with the help of our mentors."
-    },
-    {
-        category: "The Hacking",
-        question: "Are there specific tech stacks or themes?",
-        answer: "You are free to use any technology or framework. We feature diverse tracks like AgriTech, Edtech, Web3 & Crypto and more, including an open innovation track! There are no specific problem statements given, you have complete freedom over your project as long as it pertains to its track."
-    },
-    {
-        category: "The Hacking",
-        question: "Can I build hardware projects or start early?",
-        answer: "Hardware projects are welcome (bring your own kits!), but all code and design must be built during the 48-hour window. Pre-built projects are strictly prohibited."
-    },
-    {
-        category: "The Hacking",
-        question: "Who owns the intellectual property and what about plagiarism?",
-        answer: "You own 100% of your project. However, plagiarism or using unattributed code is strictly prohibited and will lead to immediate disqualification."
-    },
-    {
-        category: "Judging & Prizes",
-        question: "How are projects judged and what is the submission process?",
-        answer: "Projects are judged on innovation, technical complexity, and design across three rounds. All projects must be submitted via DoraHacks with a GitHub repo link."
-    },
-    {
-        category: "Judging & Prizes",
-        question: "What are the prizes for winning?",
-        answer: "We have a massive prize pool including cash awards, premium tech gadgets, and a bunch of swags!"
-    },
-    {
-        category: "Judging & Prizes",
-        question: "Can my team apply for multiple tracks or bounties?",
-        answer: "Each team must choose only ONE track to work on."
-    },
-    {
-        category: "Logistics",
-        question: "Will I get an On-Duty (OD) certificate?",
-        answer: "Since the event is being conducted on holidays, you won't need them!"
-    },
-    {
-        category: "Logistics",
-        question: "What should I bring?",
-        answer: "Bring your laptop, chargers, gear, and college ID."
-    }
+  {
+    category: "General",
+    question: "What exactly is OSSome Hacks 3.0?",
+    answer:
+      "It is our flagship 36-hour national-level hackathon where you build projects from scratch, learn from mentors, and collaborate with student developers from across the country.",
+  },
+  {
+    category: "General",
+    question: "When and where is it happening?",
+    answer:
+      "OSSome Hacks 3.0 is scheduled for April 3-4, 2026, at SRMIST, Kattankulathur, Chennai, with event activities spanning both online and on-venue sessions as per the official timeline.",
+  },
+  {
+    category: "General",
+    question: "Is there a registration fee?",
+    answer: "No registration fee. Participation is completely free.",
+  },
+  {
+    category: "General",
+    question: "Who is organizing this event?",
+    answer:
+      "The event is organized by GitHub Community SRM, a student-led club at SRMIST focused on open source, innovation, and technical collaboration.",
+  },
+  {
+    category: "General",
+    question: "Is there a Code of Conduct?",
+    answer:
+      "Yes. All participants must follow the event Code of Conduct and hackathon rules to ensure a safe, respectful, and professional experience for everyone.",
+  },
+  {
+    category: "Participation",
+    question: "Who can join the hackathon?",
+    answer:
+      "Any college student with an interest in technology can apply, including beginners and experienced builders.",
+  },
+  {
+    category: "Participation",
+    question: "What is the team size and can I participate alone?",
+    answer:
+      "Teams must have 2 to 4 members. Solo registrations are not eligible, but you can form a team through the community channels before the event.",
+  },
+  {
+    category: "Participation",
+    question: "Can I have teammates from different colleges?",
+    answer:
+      "No. Inter-college teams are not allowed due to administrative constraints.",
+  },
+  {
+    category: "Participation",
+    question: "Do I need to be a 'pro' coder to join?",
+    answer:
+      "Not at all. OSSome Hacks welcomes beginners and encourages learning through mentorship, workshops, and peer collaboration.",
+  },
+  {
+    category: "The Hacking",
+    question: "Are there specific tech stacks or themes?",
+    answer:
+      "You are free to use any tech stack. This edition has two themes: Claw & Shield and Open Innovation (AI/ML). You should build your project under one chosen theme.",
+  },
+  {
+    category: "The Hacking",
+    question: "Can I build hardware projects or start early?",
+    answer:
+      "Hardware projects are welcome (bring your own kits), but all core work must be done during the official 36-hour hackathon window. Pre-built projects are not allowed.",
+  },
+  {
+    category: "The Hacking",
+    question: "Who owns the intellectual property and what about plagiarism?",
+    answer:
+      "Your team retains ownership of your project. Plagiarism, copied code without attribution, or reusing old submissions can lead to immediate disqualification.",
+  },
+  {
+    category: "Judging & Prizes",
+    question: "How are projects judged and what is the submission process?",
+    answer:
+      "Projects are evaluated on innovation, technical implementation, impact, and presentation quality. Teams must submit their final work through the official submission flow with a public GitHub repository.",
+  },
+  {
+    category: "Judging & Prizes",
+    question: "What are the prizes for winning?",
+    answer:
+      "There are four cash awards across two themes: Claw & Shield Winner (₹20,000), Claw & Shield Runner-up (₹10,000), Open Innovation Winner (₹10,000), and Open Innovation Runner-up (₹5,000). Eligible participants also receive certificates, with additional recognition for selected teams.",
+  },
+  {
+    category: "Judging & Prizes",
+    question: "Can my team apply for multiple tracks or bounties?",
+    answer:
+      "No. Each team can submit under only one theme track for final evaluation.",
+  },
+  {
+    category: "Logistics",
+    question: "Will I get an On-Duty (OD) certificate?",
+    answer:
+      "Since the event schedule falls on holiday dates, OD is generally not required. Please follow your college department guidelines if any documentation is needed.",
+  },
+  {
+    category: "Logistics",
+    question: "What should I bring?",
+    answer:
+      "Bring your laptop, charger, extension board (if needed), college ID, and any hardware kits you plan to use.",
+  },
 ];
